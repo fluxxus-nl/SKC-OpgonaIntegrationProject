@@ -1,6 +1,6 @@
 {
-  "id": "f2ff9d32-9e20-4f35-a7b5-2a9bc8586587",
-  "name": "Conference Planner",
+  "id": "9785189d-7bca-408d-988e-2ff50e1a5176",
+  "name": "Conference Planner Test",
   "publisher": "SK Consultancy SA",
   "version": "1.0.0.0",
   "brief": "",
@@ -10,14 +10,21 @@
   "help": "",
   "url": "",
   "logo": "",
-  "dependencies": [],
+  "dependencies": [
+    {
+      "id": "f2ff9d32-9e20-4f35-a7b5-2a9bc8586587",
+      "name": "Conference Planner",
+      "publisher": "SK Consultancy SA",
+      "version": "1.0.0.0"
+    }
+  ],
   "screenshots": [],
   "platform": "1.0.0.0",
   "application": "24.0.0.0",
   "idRanges": [
     {
-      "from": 50000,
-      "to": 50099
+      "from": 60000,
+      "to": 60099
     }
   ],
   "features": [

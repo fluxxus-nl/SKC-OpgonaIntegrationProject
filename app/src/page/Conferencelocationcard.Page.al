@@ -1,4 +1,4 @@
-page 50001 "Conference Location Card ASD"
+page 50002 "Conference Location Card ASD"
 {
     Caption = 'Conference Location';
     PageType = Card;

@@ -23,6 +23,10 @@ page 50001 "ConferenceSetup ASD"
                 {
                     ApplicationArea = All;
                 }
+                field(ConferenceLocationNos; Rec.ConferenceLocationNos)
+                {
+                    ApplicationArea = All;
+                }
             }
         }
     }

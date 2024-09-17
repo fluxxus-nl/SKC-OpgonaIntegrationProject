@@ -1,4 +1,4 @@
-table 50000 "Conference Location ASD"
+table 50005 "Conference Location ASD"
 {
     DataClassification = CustomerContent;
     caption = 'Conference Location';
@@ -8,40 +8,33 @@ table 50000 "Conference Location ASD"
         field(1; "No."; code[20])
         {
             Caption = 'No.';
-            DataClassification = ToBeClassified;
         }
 
         field(2; Name; Text[100])
         {
             Caption = 'Name';
-            DataClassification = CustomerContent;
         }
 
         field(5; Address; Text[100])
         {
             Caption = 'Address';
-            DataClassification = CustomerContent;
         }
         field(6; "Address 2"; Text[50])
         {
             Caption = 'Address 2';
-            DataClassification = CustomerContent;
         }
         field(7; City; Text[30])
         {
             Caption = 'City';
-            DataClassification = CustomerContent;
         }
         field(8; "Base Unit of Measure"; Code[10])
         {
             Caption = 'Base Unit of Measure';
             TableRelation = "Unit of Measure";
-            DataClassification = CustomerContent;
         }
         field(9; "Unit Price"; Decimal)
         {
             Caption = 'Unit Price';
-            DataClassification = CustomerContent;
         }
         field(10; Comment; Boolean)
         {
@@ -53,7 +46,6 @@ table 50000 "Conference Location ASD"
         field(11; "Gen. Prod. Posting Group"; Code[20])
         {
             Caption = 'Gen. Prod. Posting Group';
-            DataClassification = CustomerContent;
             TableRelation = "Gen. Product Posting Group";
             trigger OnValidate();
             begin
@@ -65,7 +57,6 @@ table 50000 "Conference Location ASD"
         field(12; "VAT Prod. Posting Group"; Code[20])
         {
             Caption = 'VAT Prod. Posting Group';
-            DataClassification = CustomerContent;
             TableRelation = "VAT Product Posting Group";
         }
         field(13; "No. Series"; Code[20])
@@ -73,18 +64,15 @@ table 50000 "Conference Location ASD"
             Caption = 'No. Series';
             Editable = false;
             TableRelation = "No. Series";
-            DataClassification = CustomerContent;
         }
         field(15; Status; enum "Status ASD")
         {
             caption = 'Status';
-            DataClassification = CustomerContent;
         }
         field(35; "Country/Region Code"; Code[10])
         {
             Caption = 'Country/Region Code';
             TableRelation = "Country/Region";
-            DataClassification = CustomerContent;
         }
 
     }
@@ -95,6 +83,20 @@ table 50000 "Conference Location ASD"
             Clustered = true;
         }
     }
+
+
+    trigger OnInsert()
+    var
+        ConferenceSetupASD: Record "ConferenceSetup ASD";
+        NoSeriesManagement: codeunit NoSeriesManagement;
+    begin
+        if "No." = '' then
+            if ConferenceSetupASD.Get() then begin
+                ConferenceSetupASD.TestField(ConferenceLocationNos);
+                NoSeriesManagement.InitSeries(ConferenceSetupASD.ConferenceLocationNos, Rec."No. Series", 0D, "No.", "No. Series");
+            end;
+    end;
+
     var
         GenProdPostingGroup: Record "Gen. Product Posting Group";
 }

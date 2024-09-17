@@ -1,18 +1,20 @@
-page 50003 "ConferenceRegHeader ASD"
+page 50004 "ConferenceRegHeaderList ASD"
 {
-    Caption = 'Conference Registration';
-    PageType = Card;
+    Caption = 'Conference Registration List';
+    PageType = List;
     ApplicationArea = All;
-    UsageCategory = Administration;
+    UsageCategory = Lists;
     SourceTable = "ConferenceRegHeader ASD";
+    CardPageId = "ConferenceRegHeaderCard ASD";
 
     layout
     {
         area(Content)
         {
-            group(General)
+            repeater(Lists)
             {
-                Caption = 'General';
+                Caption = 'Lists';
+
                 field(DocumentNo; Rec.DocumentNo)
                 {
                     ApplicationArea = All;
@@ -38,16 +40,6 @@ page 50003 "ConferenceRegHeader ASD"
                     ApplicationArea = All;
                     Editable = true;
                 }
-                field(StartingTime; Rec.StartingTime)
-                {
-                    ApplicationArea = All;
-                    Editable = true;
-                }
-                field(EndingTime; Rec.EndingTime)
-                {
-                    ApplicationArea = All;
-                    Editable = true;
-                }
                 field(DocumentDate; Rec.DocumentDate)
                 {
                     ApplicationArea = All;
@@ -68,8 +60,11 @@ page 50003 "ConferenceRegHeader ASD"
                     ApplicationArea = All;
                     Editable = true;
                 }
-
             }
+        }
+        area(Factboxes)
+        {
+
         }
     }
 
@@ -77,16 +72,13 @@ page 50003 "ConferenceRegHeader ASD"
     {
         area(Processing)
         {
-            action(Post)
+            action(ActionName)
             {
-                Caption = 'Post';
-                ToolTip = 'Specifies the Post Action';
-                Image = Post;
                 ApplicationArea = All;
 
                 trigger OnAction()
                 begin
-                    Message('in progress');
+
                 end;
             }
         }

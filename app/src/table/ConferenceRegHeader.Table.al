@@ -62,6 +62,11 @@ table 50002 "ConferenceRegHeader ASD"
             Caption = 'Status';
             Tooltip = 'Specifies the value of the Status field';
         }
+        field(12; DocumentNoSeries; Code[20])
+        {
+            Caption = 'Document No Series';
+            Tooltip = 'Specifies the value of the DocumentNoSeries field';
+        }
     }
 
     keys
@@ -78,23 +83,14 @@ table 50002 "ConferenceRegHeader ASD"
     }
 
     trigger OnInsert()
+    var
+        ConferenceSetupASD: Record "ConferenceSetup ASD";
+        NoSeriesManagement: codeunit NoSeriesManagement;
     begin
-
+        if DocumentNo = '' then
+            if ConferenceSetupASD.Get() then begin
+                ConferenceSetupASD.TestField(ConferenceRegNos);
+                NoSeriesManagement.InitSeries(ConferenceSetupASD.ConferenceRegNos, Rec.DocumentNoSeries, 0D, DocumentNo, DocumentNoSeries);
+            end;
     end;
-
-    trigger OnModify()
-    begin
-
-    end;
-
-    trigger OnDelete()
-    begin
-
-    end;
-
-    trigger OnRename()
-    begin
-
-    end;
-
 }

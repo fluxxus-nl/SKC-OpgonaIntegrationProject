@@ -14,6 +14,7 @@ page 50002 "Conference Location Card ASD"
                 field("No."; Rec."No.")
                 {
                     ToolTip = 'Specifies the value of the MyField field.', Comment = '%';
+                    Editable = false;
                 }
                 field(Name; Rec.Name)
                 {
@@ -39,8 +40,6 @@ page 50002 "Conference Location Card ASD"
                 {
                     ToolTip = 'Specifies the value of the Status field.', Comment = '%';
                 }
-
-
             }
             group("Invoicing Details")
             {
@@ -60,10 +59,6 @@ page 50002 "Conference Location Card ASD"
                 field("VAT Prod. Posting Group"; Rec."VAT Prod. Posting Group")
                 {
                     ToolTip = 'Specifies the value of the VAT Prod. Posting Group field.', Comment = '%';
-                }
-                field("No. Series"; Rec."No. Series")
-                {
-                    ToolTip = 'Specifies the value of the No. Series field.', Comment = '%';
                 }
                 field(Comment; Rec.Comment)
                 {

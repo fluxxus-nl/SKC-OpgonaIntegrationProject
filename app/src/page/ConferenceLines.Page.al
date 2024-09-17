@@ -37,13 +37,25 @@ page 50007 "ConferenceLines ASD"
                 {
                     ToolTip = 'Specifies the value of the Bill-to Customer No. field.', Comment = '%';
                 }
-                field("Line No."; Rec."Line No.")
-                {
-                    ToolTip = 'Specifies the value of the Line No. field.', Comment = '%';
-                }
                 field(Price; Rec.Price)
                 {
                     ToolTip = 'Specifies the value of the Price field.', Comment = '%';
+                }
+                field(Quantity; Rec.Quantity)
+                {
+                    ToolTip = 'Specifies the value of the Quantity field.', Comment = '%';
+                }
+                field("Unit Price"; Rec."Unit Price")
+                {
+                    ToolTip = 'Specifies the value of the Unit Price field.', Comment = '%';
+                }
+                field(Description; Rec.Description)
+                {
+                    ToolTip = 'Specifies the value of the Description field.', Comment = '%';
+                }
+                field("Line Discount %"; Rec."Line Discount %")
+                {
+                    ToolTip = 'Specifies the value of the Line Discount % field.', Comment = '%';
                 }
                 field(Registered; Rec.Registered)
                 {

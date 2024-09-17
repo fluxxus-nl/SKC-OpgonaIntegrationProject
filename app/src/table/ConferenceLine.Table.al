@@ -48,6 +48,15 @@ table 50003 "ConferenceLine ASD"
         {
             Caption = 'Type';
             Dataclassification = CustomerContent;
+            trigger onValidate()
+            begin
+                if rec."Type" <> xrec."Type" then begin
+                    rec."No." := '';
+                    rec."Bill-to Customer No." := '';
+                    rec.Amount := 0;
+                    rec.Price := 0;
+                end
+            end;
         }
         field(10; "No."; Code[20])
         {
@@ -55,6 +64,45 @@ table 50003 "ConferenceLine ASD"
             TableRelation = if (Type = const(Resource)) Resource
             else
             if (Type = const("Item")) Item;
+            trigger onvalidate()
+            var
+                Item: Record Item;
+            begin
+                Item.Get(Rec."No.");
+                rec.Description := Item.Description;
+                rec."Unit Price" := Item."Unit Price";
+            end;
+        }
+        field(11; "Unit Price"; Decimal)
+        {
+            AutoFormatType = 2;
+            Caption = 'Unit Price';
+
+            trigger OnValidate()
+            var
+                IsHandled: Boolean;
+            begin
+                IsHandled := false;
+                OnBeforeValidateUnitPrice(Rec, CurrFieldNo, IsHandled);
+                if not IsHandled then
+                    Validate("Line Discount %");
+            end;
+        }
+        field(12; Quantity; Integer)
+        {
+            Caption = 'Quantity';
+            DataClassification = CustomerContent;
+        }
+        field(13; "Line Discount %"; Decimal)
+        {
+            Caption = 'Line Discount %';
+            DecimalPlaces = 0 : 5;
+            MaxValue = 100;
+            MinValue = 0;
+        }
+        field(14; Description; Text[100])
+        {
+            Caption = 'Description';
         }
     }
     keys
@@ -64,4 +112,9 @@ table 50003 "ConferenceLine ASD"
             Clustered = true;
         }
     }
+    [IntegrationEvent(false, false)]
+    local procedure OnBeforeValidateUnitPrice(var SalesLine: Record "ConferenceRegistrationLine ASD"; CurrentFieldNo: Integer; var IsHandled: Boolean)
+    begin
+    end;
+
 }

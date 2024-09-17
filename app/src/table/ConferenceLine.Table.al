@@ -104,6 +104,20 @@ table 50003 "Conference Line ASD"
         {
             Caption = 'Description';
         }
+        field(15; "Global Dimension 1 Filter"; Code[20])
+        {
+            CaptionClass = '1,3,1';
+            Caption = 'Global Dimension 1 Filter';
+            FieldClass = FlowFilter;
+            TableRelation = "Dimension Value".Code where("Global Dimension No." = const(1));
+        }
+        field(16; "Global Dimension 2 Filter"; Code[20])
+        {
+            CaptionClass = '1,3,2';
+            Caption = 'Global Dimension 2 Filter';
+            FieldClass = FlowFilter;
+            TableRelation = "Dimension Value".Code where("Global Dimension No." = const(2));
+        }
     }
     keys
     {

@@ -56,6 +56,15 @@ table 50003 "ConferenceRegistrationLine ASD"
         {
             Caption = 'Type';
             Dataclassification = CustomerContent;
+            trigger onValidate()
+            begin
+                if rec."Type" <> xrec."Type" then begin
+                    rec."No." := '';
+                    rec."Bill-to Customer No." := '';
+                    rec.Amount := 0;
+                    rec.Price := 0;
+                end
+            end;
         }
         field(10; "No."; Code[20])
         {

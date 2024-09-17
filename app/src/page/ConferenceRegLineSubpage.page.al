@@ -37,10 +37,6 @@ page 50005 "ConferenceReglinesubpage ASD"
                 {
                     ToolTip = 'Specifies the value of the Bill-to Customer No. field.', Comment = '%';
                 }
-                field("Line No."; Rec."Line No.")
-                {
-                    ToolTip = 'Specifies the value of the Line No. field.', Comment = '%';
-                }
                 field(Price; Rec.Price)
                 {
                     ToolTip = 'Specifies the value of the Price field.', Comment = '%';

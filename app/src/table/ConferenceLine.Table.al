@@ -44,6 +44,18 @@ table 50003 "ConferenceLine ASD"
             Caption = 'Registered';
             Editable = false;
         }
+        field(9; type; enum "Sales Line Type ASD")
+        {
+            Caption = 'Type';
+            Dataclassification = CustomerContent;
+        }
+        field(10; "No."; Code[20])
+        {
+            Caption = 'No.';
+            TableRelation = if (Type = const(Resource)) Resource
+            else
+            if (Type = const("Item")) Item;
+        }
     }
     keys
     {

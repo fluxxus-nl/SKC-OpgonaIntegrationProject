@@ -1,6 +1,6 @@
 page 50004 "Conference List ASD"
 {
-    Caption = 'Conference List';
+    Caption = 'Conference';
     PageType = List;
     ApplicationArea = All;
     UsageCategory = Lists;

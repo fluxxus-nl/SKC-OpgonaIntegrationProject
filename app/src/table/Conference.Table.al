@@ -1,6 +1,6 @@
-table 50002 "ConferenceRegHeader ASD"
+table 50002 "Conference ASD"
 {
-    Caption = 'Conference Registration Header';
+    Caption = 'Conference';
     DataClassification = CustomerContent;
 
     fields
@@ -79,7 +79,9 @@ table 50002 "ConferenceRegHeader ASD"
 
     fieldgroups
     {
-        // Add changes to field groups here
+        fieldgroup(DropDown; ConferenceLocation)
+        {
+        }
     }
 
     trigger OnInsert()

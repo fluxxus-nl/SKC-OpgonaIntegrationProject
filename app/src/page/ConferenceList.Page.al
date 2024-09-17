@@ -1,11 +1,11 @@
-page 50004 "ConferenceRegHeaderList ASD"
+page 50004 "ConferenceList ASD"
 {
-    Caption = 'Conference Registration List';
+    Caption = 'Conference List';
     PageType = List;
     ApplicationArea = All;
     UsageCategory = Lists;
-    SourceTable = "ConferenceRegHeader ASD";
-    CardPageId = "ConferenceRegHeaderCard ASD";
+    SourceTable = "Conference ASD";
+    CardPageId = "ConferenceCard ASD";
 
     layout
     {
@@ -72,14 +72,25 @@ page 50004 "ConferenceRegHeaderList ASD"
     {
         area(Processing)
         {
-            action(ActionName)
+            action(Post)
             {
+                Caption = 'Post';
                 ApplicationArea = All;
+                Image = Post;
+                Scope = Repeater;
 
                 trigger OnAction()
                 begin
-
+                    Message('in progress');
                 end;
+            }
+        }
+        area(Promoted)
+        {
+            group(Category_Process)
+            {
+                Caption = 'Process';
+                actionref(Post_Promoted; Post) { }
             }
         }
     }

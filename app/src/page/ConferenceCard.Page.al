@@ -1,10 +1,10 @@
-page 50003 "ConferenceRegHeaderCard ASD"
+page 50003 "ConferenceCard ASD"
 {
     Caption = 'Conference';
     PageType = Card;
     ApplicationArea = All;
     UsageCategory = Administration;
-    SourceTable = "ConferenceRegHeader ASD";
+    SourceTable = "Conference ASD";
     RefreshOnActivate = true;
 
     layout
@@ -70,7 +70,7 @@ page 50003 "ConferenceRegHeaderCard ASD"
                     Editable = true;
                 }
             }
-            part(ConferenceRegistrationLines; "ConferenceReglinesubpage ASD")
+            part(ConferenceRegistrationLines; "ConferenceLines ASD")
             {
                 ApplicationArea = All;
                 SubPageLink = "Document No." = field(DocumentNo);
@@ -93,6 +93,14 @@ page 50003 "ConferenceRegHeaderCard ASD"
                 begin
                     Message('in progress');
                 end;
+            }
+        }
+        area(Promoted)
+        {
+            group(Category_Process)
+            {
+                Caption = 'Process';
+                actionref(Post_Promoted; Post) { }
             }
         }
     }

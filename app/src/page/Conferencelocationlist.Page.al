@@ -1,6 +1,6 @@
 page 50000 "Conferencelocationlist ASD"
 {
-    Caption = 'Conference Location';
+    Caption = 'Conference Location List';
     PageType = List;
     UsageCategory = Lists;
     ApplicationArea = All;
@@ -34,13 +34,17 @@ page 50000 "Conferencelocationlist ASD"
     {
         area(Processing)
         {
-            action(ActionName)
+            action(CreateConferenceDocument)
             {
+                Caption = 'Create Conference Document (TEST)';
+                ToolTip = 'Specifies the Create Conference Document action';
                 ApplicationArea = All;
+                Scope = Repeater;
+                Image = Create;
 
                 trigger OnAction();
                 begin
-
+                    Message('in progress');
                 end;
             }
         }

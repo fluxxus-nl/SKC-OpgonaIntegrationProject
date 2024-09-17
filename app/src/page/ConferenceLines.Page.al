@@ -1,4 +1,4 @@
-page 50005 "ConferenceReglinesubpage ASD"
+page 50005 "ConferenceLines ASD"
 {
     Caption = 'Conference Lines';
     PageType = ListPart;
@@ -7,7 +7,7 @@ page 50005 "ConferenceReglinesubpage ASD"
     AutoSplitKey = true;
     DelayedInsert = true;
     MultipleNewLines = true;
-    SourceTable = "ConferenceRegistrationLine ASD";
+    SourceTable = "ConferenceLine ASD";
 
     layout
     {
@@ -48,22 +48,6 @@ page 50005 "ConferenceReglinesubpage ASD"
                     ToolTip = 'Specifies the value of the To Invoice field.', Comment = '%';
                 }
 
-            }
-        }
-    }
-
-    actions
-    {
-        area(Processing)
-        {
-            action(ActionName)
-            {
-                ApplicationArea = All;
-
-                trigger OnAction();
-                begin
-
-                end;
             }
         }
     }

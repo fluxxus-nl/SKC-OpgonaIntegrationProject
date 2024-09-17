@@ -13,7 +13,7 @@ page 50002 "Conference Location Card ASD"
             {
                 field("No."; Rec."No.")
                 {
-                    ToolTip = 'Specifies the value of the MyField field.', Comment = '%';
+                    ToolTip = 'Specifies the value of the No. field.', Comment = '%';
                     Editable = false;
                 }
                 field(Name; Rec.Name)
@@ -43,6 +43,7 @@ page 50002 "Conference Location Card ASD"
             }
             group("Invoicing Details")
             {
+                Caption = 'Invoice Details';
 
                 field("Base Unit of Measure"; Rec."Base Unit of Measure")
                 {
@@ -77,13 +78,17 @@ page 50002 "Conference Location Card ASD"
     {
         area(Processing)
         {
-            action(ActionName)
+            action(CreateConferenceDocument)
             {
+                Caption = 'Create Conference Document (TEST)';
+                ToolTip = 'Specifies the Create Conference Document action';
                 ApplicationArea = All;
+                Scope = Repeater;
+                Image = Create;
 
-                trigger OnAction()
+                trigger OnAction();
                 begin
-
+                    Message('in progress');
                 end;
             }
         }

@@ -5,6 +5,7 @@ page 50003 "ConferenceRegHeader ASD"
     ApplicationArea = All;
     UsageCategory = Administration;
     SourceTable = "ConferenceRegHeader ASD";
+    RefreshOnActivate = true;
 
     layout
     {
@@ -67,6 +68,11 @@ page 50003 "ConferenceRegHeader ASD"
                 {
                     ApplicationArea = All;
                     Editable = true;
+                }
+                part(SeminarRegistrationLines; "ConferenceReglinesubpage ASD")
+                {
+                    ApplicationArea = All;
+                    SubPageLink = "Document No." = field(DocumentNo);
                 }
 
             }

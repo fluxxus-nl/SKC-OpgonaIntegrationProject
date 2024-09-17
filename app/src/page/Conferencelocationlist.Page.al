@@ -21,31 +21,6 @@ page 50000 "Conferencelocationlist ASD"
                 {
                     ToolTip = 'Specifies the value of the Name field.', Comment = '%';
                 }
-                field(Address; Rec.Address)
-                {
-                    ToolTip = 'Specifies the value of the Address field.', Comment = '%';
-                }
-                field("Address 2"; Rec."Address 2")
-                {
-                    ToolTip = 'Specifies the value of the Address 2 field.', Comment = '%';
-                }
-                field(City; Rec.City)
-                {
-                    ToolTip = 'Specifies the value of the City field.', Comment = '%';
-                }
-                field("Country/Region Code"; Rec."Country/Region Code")
-                {
-                    ToolTip = 'Specifies the value of the Country/Region Code field.', Comment = '%';
-                }
-                field("Base Unit of Measure"; Rec."Base Unit of Measure")
-                {
-                    ToolTip = 'Specifies the value of the Base Unit of Measure field.', Comment = '%';
-                }
-                field("Unit Price"; Rec."Unit Price")
-                {
-                    ToolTip = 'Specifies the value of the Unit Price field.', Comment = '%';
-                }
-
             }
         }
         area(Factboxes)

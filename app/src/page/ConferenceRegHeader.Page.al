@@ -69,7 +69,7 @@ page 50003 "ConferenceRegHeader ASD"
                     ApplicationArea = All;
                     Editable = true;
                 }
-                part(SeminarRegistrationLines; "ConferenceReglinesubpage ASD")
+                part(ConferenceRegistrationLines; "ConferenceReglinesubpage ASD")
                 {
                     ApplicationArea = All;
                     SubPageLink = "Document No." = field(DocumentNo);

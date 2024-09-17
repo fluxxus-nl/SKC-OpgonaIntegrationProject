@@ -41,6 +41,22 @@ page 50005 "ConferenceReglinesubpage ASD"
                 {
                     ToolTip = 'Specifies the value of the Price field.', Comment = '%';
                 }
+                field(Quantity; Rec.Quantity)
+                {
+                    ToolTip = 'Specifies the value of the Quantity field.', Comment = '%';
+                }
+                field("Unit Price"; Rec."Unit Price")
+                {
+                    ToolTip = 'Specifies the value of the Unit Price field.', Comment = '%';
+                }
+                field(Description; Rec.Description)
+                {
+                    ToolTip = 'Specifies the value of the Description field.', Comment = '%';
+                }
+                field("Line Discount %"; Rec."Line Discount %")
+                {
+                    ToolTip = 'Specifies the value of the Line Discount % field.', Comment = '%';
+                }
                 field(Registered; Rec.Registered)
                 {
                     ToolTip = 'Specifies the value of the Registered field.', Comment = '%';

@@ -76,6 +76,7 @@ page 50002 "Conference Location Card ASD"
 
     actions
     {
+
         area(Processing)
         {
             action(CreateConferenceDocument)
@@ -90,6 +91,18 @@ page 50002 "Conference Location Card ASD"
                 begin
                     Message('in progress');
                 end;
+            }
+        }
+        area(Navigation)
+        {
+            action(Dimensions)
+            {
+                Caption = 'Dimensions';
+                ToolTip = 'Specifies the Dimensions of this Location';
+                ApplicationArea = All;
+                Image = Dimensions;
+                ShortcutKey = 'Shift+Ctrl+D';
+                RunObject = page "Default Dimensions";
             }
         }
     }

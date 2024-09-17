@@ -69,11 +69,11 @@ page 50003 "ConferenceRegHeaderCard ASD"
                     ApplicationArea = All;
                     Editable = true;
                 }
-                part(ConferenceRegistrationLines; "ConferenceReglinesubpage ASD")
-                {
-                    ApplicationArea = All;
-                    SubPageLink = "Document No." = field(DocumentNo);
-                }
+            }
+            part(ConferenceRegistrationLines; "ConferenceReglinesubpage ASD")
+            {
+                ApplicationArea = All;
+                SubPageLink = "Document No." = field(DocumentNo);
             }
         }
     }

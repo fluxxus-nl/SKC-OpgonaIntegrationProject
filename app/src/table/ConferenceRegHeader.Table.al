@@ -20,7 +20,7 @@ table 50002 "ConferenceRegHeader ASD"
         {
             Caption = 'Conference Location';
             Tooltip = 'Specifies the value of the Conference Location field';
-            //TableRelation to conference location
+            TableRelation = "Conference Location ASD"."No.";
         }
         field(4; StartingDate; Date)
         {

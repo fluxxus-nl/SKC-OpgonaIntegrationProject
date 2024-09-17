@@ -2,7 +2,6 @@ enum 50001 "Sales Line Type ASD"
 {
     Extensible = false;
 
-
     value(0; Item)
     {
         Caption = 'Item';

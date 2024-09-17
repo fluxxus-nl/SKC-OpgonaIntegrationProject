@@ -1,4 +1,4 @@
-table 50003 "ConferenceLine ASD"
+table 50003 "Conference Line ASD"
 {
     DataClassification = CustomerContent;
 
@@ -113,7 +113,7 @@ table 50003 "ConferenceLine ASD"
         }
     }
     [IntegrationEvent(false, false)]
-    local procedure OnBeforeValidateUnitPrice(var SalesLine: Record "ConferenceRegistrationLine ASD"; CurrentFieldNo: Integer; var IsHandled: Boolean)
+    local procedure OnBeforeValidateUnitPrice(var SalesLine: Record "Conference Line ASD"; CurrentFieldNo: Integer; var IsHandled: Boolean)
     begin
     end;
 

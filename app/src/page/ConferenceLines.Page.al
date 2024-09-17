@@ -1,4 +1,4 @@
-page 50007 "ConferenceLines ASD"
+page 50007 "Conference Lines ASD"
 {
     Caption = 'Conference Lines';
     PageType = ListPart;
@@ -6,7 +6,7 @@ page 50007 "ConferenceLines ASD"
     AutoSplitKey = true;
     DelayedInsert = true;
     MultipleNewLines = true;
-    SourceTable = "ConferenceLine ASD";
+    SourceTable = "Conference Line ASD";
 
     layout
     {

@@ -1,4 +1,4 @@
-page 50003 "ConferenceCard ASD"
+page 50003 "Conference Card ASD"
 {
     Caption = 'Conference';
     PageType = Card;
@@ -28,7 +28,7 @@ page 50003 "ConferenceCard ASD"
                 {
                     ApplicationArea = All;
                     Editable = true;
-                    LookupPageId = "Conferencelocationlist ASD";
+                    LookupPageId = "Conference Location List ASD";
                 }
                 field(StartingDate; Rec.StartingDate)
                 {
@@ -71,7 +71,7 @@ page 50003 "ConferenceCard ASD"
                     Editable = true;
                 }
             }
-            part(ConferenceRegistrationLines; "ConferenceLines ASD")
+            part(ConferenceRegistrationLines; "Conference Lines ASD")
             {
                 ApplicationArea = All;
                 SubPageLink = "Document No." = field(DocumentNo);

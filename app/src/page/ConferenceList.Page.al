@@ -1,11 +1,11 @@
-page 50004 "ConferenceList ASD"
+page 50004 "Conference List ASD"
 {
     Caption = 'Conference List';
     PageType = List;
     ApplicationArea = All;
     UsageCategory = Lists;
     SourceTable = "Conference ASD";
-    CardPageId = "ConferenceCard ASD";
+    CardPageId = "Conference Card ASD";
 
     layout
     {

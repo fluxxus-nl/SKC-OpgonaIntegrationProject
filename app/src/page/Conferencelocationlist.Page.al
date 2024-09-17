@@ -1,4 +1,4 @@
-page 50000 "Conferencelocationlist ASD"
+page 50000 "Conference Location List ASD"
 {
     Caption = 'Conference Location List';
     PageType = List;

@@ -1,11 +1,11 @@
-page 50001 "ConferenceSetup ASD"
+page 50001 "Conference Setup ASD"
 {
     PageType = Card;
     Caption = 'Conference Setup';
     InsertAllowed = false;
     DeleteAllowed = false;
     UsageCategory = Administration;
-    SourceTable = "ConferenceSetup ASD";
+    SourceTable = "Conference Setup ASD";
 
 
     layout

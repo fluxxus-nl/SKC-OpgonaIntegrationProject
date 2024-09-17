@@ -1,4 +1,4 @@
-table 50001 "ConferenceSetup ASD"
+table 50001 "Conference Setup ASD"
 {
     Caption = 'Conference Setup';
     DataClassification = CustomerContent;

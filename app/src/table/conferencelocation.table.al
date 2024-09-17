@@ -86,7 +86,7 @@ table 50005 "Conference Location ASD"
 
     trigger OnInsert()
     var
-        ConferenceSetupASD: Record "ConferenceSetup ASD";
+        ConferenceSetupASD: Record "Conference Setup ASD";
         NoSeriesManagement: codeunit NoSeriesManagement;
     begin
         if "No." = '' then

@@ -1,6 +1,6 @@
 page 50003 "ConferenceRegHeaderCard ASD"
 {
-    Caption = 'Conference Registration';
+    Caption = 'Conference';
     PageType = Card;
     ApplicationArea = All;
     UsageCategory = Administration;

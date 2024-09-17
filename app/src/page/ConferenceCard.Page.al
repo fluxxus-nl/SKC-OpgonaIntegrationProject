@@ -28,6 +28,7 @@ page 50003 "ConferenceCard ASD"
                 {
                     ApplicationArea = All;
                     Editable = true;
+                    LookupPageId = "Conferencelocationlist ASD";
                 }
                 field(StartingDate; Rec.StartingDate)
                 {

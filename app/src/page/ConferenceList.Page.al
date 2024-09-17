@@ -62,10 +62,6 @@ page 50004 "ConferenceList ASD"
                 }
             }
         }
-        area(Factboxes)
-        {
-
-        }
     }
 
     actions

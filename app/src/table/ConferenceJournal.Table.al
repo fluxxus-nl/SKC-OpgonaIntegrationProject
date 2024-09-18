@@ -197,6 +197,15 @@ table 50006 "Conference Journal ASD"
                 end;
             end;
         }
+        field(24; "VAT Prod. Posting Group"; Code[20])
+        {
+            Caption = 'VAT Prod. Posting Group';
+            TableRelation = "VAT Product Posting Group";
+        }
+        field(25; "Line Discount"; decimal)
+        {
+            Caption = 'Line Discount';
+        }
     }
 
     keys

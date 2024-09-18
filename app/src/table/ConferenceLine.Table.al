@@ -67,10 +67,32 @@ table 50003 "Conference Line ASD"
             trigger onvalidate()
             var
                 Item: Record Item;
+                Resource: Record Resource;
             begin
-                Item.Get(Rec."No.");
-                rec.Description := Item.Description;
-                rec."Unit Price" := Item."Unit Price";
+                case Rec.Type of
+                    Rec.Type::Item:
+                        begin
+                            Item.Get(Rec."No.");
+                            rec.Description := Item.Description;
+                            rec."Unit Price" := Item."Unit Price";
+                        end;
+                    Rec.Type::Resource:
+                        begin
+                            Resource.Get(Rec."No.");
+                            rec.Description := '';
+                            rec."Unit Price" := Resource."Unit Price";
+                        end;
+                end;
+                /*if Rec.type = Rec.type::Item then begin
+                    Item.Get(Rec."No.");
+                    rec.Description := Item.Description;
+                    rec."Unit Price" := Item."Unit Price";
+                end;
+                if Rec.type = Rec.type::Resource then begin
+                    Resource.Get(Rec."No.");
+                    rec.Description := '';
+                    rec."Unit Price" := Resource."Unit Price";
+                end*/
             end;
         }
         field(11; "Unit Price"; Decimal)

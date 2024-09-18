@@ -30,6 +30,24 @@ page 50003 "Conference Card ASD"
                     Editable = true;
                     LookupPageId = "Conference Location List ASD";
                 }
+                field(DocumentDate; Rec.DocumentDate)
+                {
+                    ApplicationArea = All;
+                    Editable = true;
+                }
+                field(Status; Rec.Status)
+                {
+                    ApplicationArea = All;
+                    Editable = true;
+                }
+                field(PostingDate; Rec.PostingDate)
+                {
+                    ApplicationArea = All;
+                    Editable = true;
+                }
+            }
+            group(Booking)
+            {
                 field(StartingDate; Rec.StartingDate)
                 {
                     ApplicationArea = All;
@@ -50,22 +68,7 @@ page 50003 "Conference Card ASD"
                     ApplicationArea = All;
                     Editable = true;
                 }
-                field(DocumentDate; Rec.DocumentDate)
-                {
-                    ApplicationArea = All;
-                    Editable = true;
-                }
-                field(PostingDate; Rec.PostingDate)
-                {
-                    ApplicationArea = All;
-                    Editable = true;
-                }
                 field(NoAttendees; Rec.NoAttendees)
-                {
-                    ApplicationArea = All;
-                    Editable = true;
-                }
-                field(Status; Rec.Status)
                 {
                     ApplicationArea = All;
                     Editable = true;

@@ -81,6 +81,16 @@ table 50002 "Conference ASD"
             FieldClass = FlowFilter;
             TableRelation = "Dimension Value".Code where("Global Dimension No." = const(2));
         }
+        field(15; "Unit Price"; Decimal)
+        {
+            Caption = 'Unit Price';
+            AutoFormatType = 0;
+        }
+        field(16; "Total Price"; Decimal)
+        {
+            Caption = 'Total Price';
+            Editable = False;
+        }
     }
 
     keys
@@ -108,5 +118,11 @@ table 50002 "Conference ASD"
                 ConferenceSetupASD.TestField(ConferenceRegNos);
                 NoSeriesManagement.InitSeries(ConferenceSetupASD.ConferenceRegNos, Rec.DocumentNoSeries, 0D, DocumentNo, DocumentNoSeries);
             end;
+    end;
+
+    procedure ValidateTimeOrder()
+    begin
+        if "StartingTime" > "EndingTime" then
+            Error('Ending Time cannot be earlier than Starting Time.');
     end;
 }

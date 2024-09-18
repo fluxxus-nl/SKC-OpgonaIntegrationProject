@@ -79,7 +79,7 @@ table 50003 "Conference Line ASD"
                     Rec.Type::Resource:
                         begin
                             Resource.Get(Rec."No.");
-                            rec.Description := '';
+                            rec.Description := Resource.Name;
                             rec."Unit Price" := Resource."Unit Price";
                         end;
                 end;

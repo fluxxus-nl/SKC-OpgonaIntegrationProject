@@ -143,10 +143,25 @@ table 50003 "Conference Line ASD"
             FieldClass = FlowFilter;
             TableRelation = "Dimension Value".Code where("Global Dimension No." = const(2));
         }
-        field(17; "Unit of Measure Code"; Code[20])
+        field(17; "Unit of Measure Code"; Code[10])
         {
             Caption = 'Unit of measure code';
             TableRelation = "Unit of Measure";
+        }
+        field(19; "Gen. Bus. Posting Group"; Code[20])
+        {
+            Caption = 'Gen. Bus. Posting Group';
+            TableRelation = "Gen. Business Posting Group";
+        }
+        field(20; "Gen. Prod. Posting Group"; Code[20])
+        {
+            Caption = 'Gen. Prod. Posting Group';
+            TableRelation = "Gen. Product Posting Group";
+        }
+        field(21; "VAT Prod. Posting Group"; Code[20])
+        {
+            Caption = 'VAT Prod. Posting Group';
+            TableRelation = "VAT Product Posting Group";
         }
     }
     keys

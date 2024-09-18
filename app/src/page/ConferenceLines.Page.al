@@ -76,6 +76,18 @@ page 50007 "Conference Lines ASD"
                 {
                     ToolTip = 'Specifies the value of the To Invoice field.', Comment = '%';
                 }
+                field("Gen. Bus. Posting Group"; Rec."Gen. Bus. Posting Group")
+                {
+                    ToolTip = 'Specifies the value of the Gen. Bus. Posting Group field.', Comment = '%';
+                }
+                field("Gen. Prod. Posting Group"; Rec."Gen. Prod. Posting Group")
+                {
+                    ToolTip = 'Specifies the value of the Gen. Prod. Posting Group field.', Comment = '%';
+                }
+                field("VAT Prod. Posting Group"; Rec."VAT Prod. Posting Group")
+                {
+                    ToolTip = 'Specifies the value of the VAT Prod. Posting Group field.', Comment = '%';
+                }
             }
         }
     }

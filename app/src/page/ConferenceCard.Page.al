@@ -92,10 +92,11 @@ page 50003 "Conference Card ASD"
                 ToolTip = 'Specifies the Post Action';
                 Image = Post;
                 ApplicationArea = All;
-
                 trigger OnAction()
+                var
+                    ConferenceJnlPostLineASD: Codeunit "Conference Jnl.-Post Line ASD";
                 begin
-                    Message('in progress');
+                    ConferenceJnlPostLineASD.Run(Rec);
                 end;
             }
         }

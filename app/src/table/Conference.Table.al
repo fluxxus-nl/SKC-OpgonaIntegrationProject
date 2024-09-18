@@ -1,6 +1,6 @@
 table 50002 "Conference ASD"
 {
-    Caption = 'Conference';
+    Caption = 'Conference Header';
     DataClassification = CustomerContent;
 
     fields

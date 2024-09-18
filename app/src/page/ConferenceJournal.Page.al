@@ -25,6 +25,10 @@ page 50008 "Conference Journal ASD"
                 {
                     ToolTip = 'Specifies the value of the Document No. field.', Comment = '%';
                 }
+                field(No; Rec.No)
+                {
+                    ToolTip = 'Specifies the value of the No. field.', Comment = '%';
+                }
                 field(Description; Rec.Description)
                 {
                     ToolTip = 'Specifies the value of the Description field.', Comment = '%';
@@ -53,6 +57,10 @@ page 50008 "Conference Journal ASD"
                 {
                     ToolTip = 'Specifies the value of the Total Price field.', Comment = '%';
                 }
+                field("Line Discount"; Rec."Line Discount")
+                {
+                    ToolTip = 'Specifies the value of the Line Discount field.', Comment = '%';
+                }
                 field("Gen. Prod. Posting Group"; Rec."Gen. Prod. Posting Group")
                 {
                     ToolTip = 'Specifies the value of the Gen. Prod. Posting Group field.', Comment = '%';
@@ -61,9 +69,10 @@ page 50008 "Conference Journal ASD"
                 {
                     ToolTip = 'Specifies the value of the Gen. Bus. Posting Group field.', Comment = '%';
                 }
-
-
-
+                field("VAT Prod. Posting Group"; Rec."VAT Prod. Posting Group")
+                {
+                    ToolTip = 'Specifies the value of the VAT Prod. Posting Group field.', Comment = '%';
+                }
             }
         }
         area(Factboxes)

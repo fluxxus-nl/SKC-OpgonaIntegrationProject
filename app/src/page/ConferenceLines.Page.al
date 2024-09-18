@@ -14,13 +14,6 @@ page 50007 "Conference Lines ASD"
         {
             repeater(Group)
             {
-
-
-
-                field("Document No."; Rec."Document No.")
-                {
-                    ToolTip = 'Specifies the value of the Document No. field.', Comment = '%';
-                }
                 field(type; Rec."type")
                 {
                     ToolTip = 'Specifies the value of the Type field.', Comment = '%';
@@ -33,10 +26,6 @@ page 50007 "Conference Lines ASD"
                 {
                     ToolTip = 'Specifies the value of the Amount field.', Comment = '%';
                 }
-                field("Bill-to Customer No."; Rec."Bill-to Customer No.")
-                {
-                    ToolTip = 'Specifies the value of the Bill-to Customer No. field.', Comment = '%';
-                }
                 field(Price; Rec.Price)
                 {
                     ToolTip = 'Specifies the value of the Price field.', Comment = '%';
@@ -44,6 +33,10 @@ page 50007 "Conference Lines ASD"
                 field(Quantity; Rec.Quantity)
                 {
                     ToolTip = 'Specifies the value of the Quantity field.', Comment = '%';
+                }
+                field("Unit of Measure Code"; Rec."Unit of Measure Code")
+                {
+                    ToolTip = 'Specifies the value of the Unit of measure code field.', Comment = '%';
                 }
                 field("Unit Price"; Rec."Unit Price")
                 {

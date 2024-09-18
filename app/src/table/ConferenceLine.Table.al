@@ -118,6 +118,11 @@ table 50003 "Conference Line ASD"
             FieldClass = FlowFilter;
             TableRelation = "Dimension Value".Code where("Global Dimension No." = const(2));
         }
+        field(17; "Unit of Measure Code"; Code[20])
+        {
+            Caption = 'Unit of measure code';
+            TableRelation = "Unit of Measure";
+        }
     }
     keys
     {

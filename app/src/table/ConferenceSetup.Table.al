@@ -11,14 +11,14 @@ table 50001 "Conference Setup ASD"
         }
         field(2; ConferenceRegNos; Code[10])
         {
-            Caption = 'Conference Registration Nos.';
-            ToolTip = 'Specifies the value of the Conference Registration Nos. field';
+            Caption = 'Conference Nos.';
+            ToolTip = 'Specifies the value of the Conference Nos. field';
             TableRelation = "No. Series";
         }
         field(3; ConferencePostedRegNos; Code[10])
         {
-            Caption = 'Posted Conference Registration Nos.';
-            ToolTip = 'Specifies the value of the Posted Conference Registration Nos. field';
+            Caption = 'Posted Conference Nos.';
+            ToolTip = 'Specifies the value of the Posted Conference Nos. field';
             TableRelation = "No. Series";
         }
         field(4; ConferenceLocationNos; Code[10])

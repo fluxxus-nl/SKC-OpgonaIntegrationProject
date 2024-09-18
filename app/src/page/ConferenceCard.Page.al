@@ -3,7 +3,7 @@ page 50003 "Conference Card ASD"
     Caption = 'Conference';
     PageType = Card;
     ApplicationArea = All;
-    UsageCategory = Administration;
+    UsageCategory = None;
     SourceTable = "Conference ASD";
     RefreshOnActivate = true;
 

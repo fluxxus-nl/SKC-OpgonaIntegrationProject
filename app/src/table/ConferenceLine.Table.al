@@ -126,6 +126,12 @@ table 50003 "Conference Line ASD"
             Clustered = true;
         }
     }
+
+    internal procedure multiply()
+    begin
+        Amount := Quantity * "Unit Price";
+    end;
+
     [IntegrationEvent(false, false)]
     local procedure OnBeforeValidateUnitPrice(var SalesLine: Record "Conference Line ASD"; CurrentFieldNo: Integer; var IsHandled: Boolean)
     begin

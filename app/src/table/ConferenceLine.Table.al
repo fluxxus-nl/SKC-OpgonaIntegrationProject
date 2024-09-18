@@ -92,6 +92,7 @@ table 50003 "Conference Line ASD"
         {
             Caption = 'Quantity';
             DataClassification = CustomerContent;
+            InitValue = 1;
         }
         field(13; "Line Discount %"; Decimal)
         {
@@ -99,6 +100,10 @@ table 50003 "Conference Line ASD"
             DecimalPlaces = 0 : 5;
             MaxValue = 100;
             MinValue = 0;
+        }
+        field(18; "Discount Amount"; Decimal)
+        {
+            Caption = 'Discount % Amount';
         }
         field(14; Description; Text[100])
         {
@@ -132,9 +137,11 @@ table 50003 "Conference Line ASD"
         }
     }
 
-    internal procedure multiply()
+    procedure RecalculateAmounts()
     begin
-        Amount := Quantity * "Unit Price";
+        "Amount" := "Unit Price" * "Quantity";
+        "Discount Amount" := ("Amount" * "Line Discount %") / 100;
+        "Amount" := "Amount" - "Discount Amount";
     end;
 
     [IntegrationEvent(false, false)]

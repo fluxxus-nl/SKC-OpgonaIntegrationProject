@@ -22,37 +22,46 @@ page 50007 "Conference Lines ASD"
                 {
                     ToolTip = 'Specifies the value of the No. field.', Comment = '%';
                 }
-                field(Amount; Rec.Amount)
+                field(Description; Rec.Description)
                 {
-                    ToolTip = 'Specifies the value of the Amount field.', Comment = '%';
+                    ToolTip = 'Specifies the value of the Description field.', Comment = '%';
+                }
+                field("Unit of Measure Code"; Rec."Unit of Measure Code")
+                {
+                    ToolTip = 'Specifies the value of the Unit of measure code field.', Comment = '%';
                 }
                 field(Quantity; Rec.Quantity)
                 {
                     ToolTip = 'Specifies the value of the Quantity field.', Comment = '%';
                     trigger OnValidate()
                     begin
-                        rec.multiply();
+                        rec.RecalculateAmounts();
                     end;
-                }
-                field("Unit of Measure Code"; Rec."Unit of Measure Code")
-                {
-                    ToolTip = 'Specifies the value of the Unit of measure code field.', Comment = '%';
                 }
                 field("Unit Price"; Rec."Unit Price")
                 {
                     ToolTip = 'Specifies the value of the Unit Price field.', Comment = '%';
                     trigger OnValidate()
                     begin
-                        rec.multiply();
+                        rec.RecalculateAmounts();
                     end;
-                }
-                field(Description; Rec.Description)
-                {
-                    ToolTip = 'Specifies the value of the Description field.', Comment = '%';
                 }
                 field("Line Discount %"; Rec."Line Discount %")
                 {
                     ToolTip = 'Specifies the value of the Line Discount % field.', Comment = '%';
+                    trigger OnValidate()
+                    begin
+                        rec.RecalculateAmounts();
+                    end;
+                }
+                field("Discount Amount"; Rec."Discount Amount")
+                {
+                    ToolTip = 'Specifies the value of the Discount Amount field.', Comment = '%';
+                }
+
+                field(Amount; Rec.Amount)
+                {
+                    ToolTip = 'Specifies the value of the Amount field.', Comment = '%';
                 }
                 field(Registered; Rec.Registered)
                 {
@@ -66,7 +75,6 @@ page 50007 "Conference Lines ASD"
                 {
                     ToolTip = 'Specifies the value of the To Invoice field.', Comment = '%';
                 }
-
             }
         }
     }

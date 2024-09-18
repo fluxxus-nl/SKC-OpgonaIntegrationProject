@@ -69,6 +69,14 @@ table 50003 "Conference Line ASD"
                 Item: Record Item;
                 Resource: Record Resource;
             begin
+                if Rec."No." <> xrec."No." then begin
+                    Rec."Unit of Measure Code" := '';
+                    Rec.Quantity := 0;
+                    Rec."Unit Price" := 0;
+                    Rec.Amount := 0;
+                    Rec."Line Discount %" := 0;
+                    Rec."Discount Amount" := 0;
+                end;
                 case Rec.Type of
                     Rec.Type::Item:
                         begin
@@ -115,7 +123,7 @@ table 50003 "Conference Line ASD"
         }
         field(18; "Discount Amount"; Decimal)
         {
-            Caption = 'Discount % Amount';
+            Caption = 'Discount Amount';
         }
         field(14; Description; Text[100])
         {

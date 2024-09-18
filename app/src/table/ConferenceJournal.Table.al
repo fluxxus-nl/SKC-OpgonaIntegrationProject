@@ -33,22 +33,6 @@ table 50006 "Conference Journal ASD"
         field(4; "Document No."; Code[20])
         {
             Caption = 'Document No.';
-            TableRelation = if ("Entry Type" = const(Location)) "Conference Location ASD"
-            else
-            if ("Entry Type" = const("Item")) Item
-            else
-            if ("Entry Type" = const(Resource)) Resource;
-
-            trigger onvalidate()
-            var
-                Item: Record Item;
-                resource: record Resource;
-                location: Record "Conference Location ASD";
-            begin
-                Item.Get(Rec."Document No.");
-                rec.Description := Item.Description;
-                rec."Unit Price" := Item."Unit Price";
-            end;
         }
         field(5; "Posting Date"; Date)
         {
@@ -176,11 +160,48 @@ table 50006 "Conference Journal ASD"
             FieldClass = FlowFilter;
             TableRelation = "Dimension Value".Code where("Global Dimension No." = const(2));
         }
+        field(23; No; Code[20])
+        {
+            Caption = 'No.';
+            TableRelation = if ("Entry Type" = const(Location)) "Conference Location ASD"
+            else
+            if ("Entry Type" = const("Item")) Item
+            else
+            if ("Entry Type" = const(Resource)) Resource;
+
+            trigger OnValidate()
+            var
+                Item: Record Item;
+                resource: record Resource;
+                location: Record "Conference Location ASD";
+            begin
+                case Rec."Entry Type" of
+                    Rec."Entry Type"::Item:
+                        begin
+                            Item.Get(Rec.No);
+                            rec.Description := Item.Description;
+                            rec."Unit Price" := Item."Unit Price";
+                        end;
+                    Rec."Entry Type"::Resource:
+                        begin
+                            Resource.Get(Rec.No);
+                            rec.Description := Resource.Name;
+                            rec."Unit Price" := Resource."Unit Price";
+                        end;
+                    Rec."Entry Type"::Location:
+                        begin
+                            location.Get(Rec.No);
+                            rec.Description := location.Name;
+                            rec."Unit Price" := location."Unit Price";
+                        end;
+                end;
+            end;
+        }
     }
 
     keys
     {
-        key(Key1; "Posting Date", "Document No.")
+        key(Key1; "Document No.", "Posting Date")
         {
             Clustered = true;
         }
@@ -190,9 +211,6 @@ table 50006 "Conference Journal ASD"
     {
         // Add changes to field groups here
     }
-
-    var
-        myInt: Integer;
 
     trigger OnInsert()
     begin
@@ -223,5 +241,10 @@ table 50006 "Conference Journal ASD"
         if not GLSetupRead then
             GLSetup.Get();
         GLSetupRead := true;
+    end;
+
+    internal procedure CheckEmptyLine(): Boolean
+    begin
+        exit(Rec."Document No." = '');
     end;
 }

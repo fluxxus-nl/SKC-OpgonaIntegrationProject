@@ -17,6 +17,7 @@ page 50007 "Conference Lines ASD"
                 field(type; Rec."type")
                 {
                     ToolTip = 'Specifies the value of the Type field.', Comment = '%';
+                    ValuesAllowed = 0, 1;
                 }
                 field("No."; Rec."No.")
                 {

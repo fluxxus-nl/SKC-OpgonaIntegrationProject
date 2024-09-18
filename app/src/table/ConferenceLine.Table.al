@@ -44,7 +44,7 @@ table 50003 "Conference Line ASD"
             Caption = 'Registered';
             Editable = false;
         }
-        field(9; type; enum "Sales Line Type ASD")
+        field(9; type; enum "Journal Line Type ASD")
         {
             Caption = 'Type';
             Dataclassification = CustomerContent;
@@ -83,16 +83,6 @@ table 50003 "Conference Line ASD"
                             rec."Unit Price" := Resource."Unit Price";
                         end;
                 end;
-                /*if Rec.type = Rec.type::Item then begin
-                    Item.Get(Rec."No.");
-                    rec.Description := Item.Description;
-                    rec."Unit Price" := Item."Unit Price";
-                end;
-                if Rec.type = Rec.type::Resource then begin
-                    Resource.Get(Rec."No.");
-                    rec.Description := '';
-                    rec."Unit Price" := Resource."Unit Price";
-                end*/
             end;
         }
         field(11; "Unit Price"; Decimal)

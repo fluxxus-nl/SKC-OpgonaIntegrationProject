@@ -21,6 +21,16 @@ table 50002 "Conference ASD"
             Caption = 'Conference Location';
             Tooltip = 'Specifies the value of the Conference Location field';
             TableRelation = "Conference Location ASD"."No.";
+            trigger OnValidate()
+            var
+                ConferenceLocationASD: record "Conference Location ASD";
+            begin
+                if ConferenceLocation <> '' then begin
+                    ConferenceLocationASD.Get(ConferenceLocation);
+                    "Unit Price" := ConferenceLocationASD."Unit Price";
+                end;
+
+            end;
         }
         field(4; StartingDate; Date)
         {
@@ -36,11 +46,13 @@ table 50002 "Conference ASD"
         {
             Caption = 'Starting Time';
             Tooltip = 'Specifies the value of the Starting Time field';
+
         }
         field(7; EndingTime; Time)
         {
             Caption = 'Ending Time';
             Tooltip = 'Specifies the value of the Ending Time field';
+            Editable = false;
         }
         field(8; DocumentDate; Date)
         {
@@ -85,11 +97,22 @@ table 50002 "Conference ASD"
         {
             Caption = 'Unit Price';
             AutoFormatType = 0;
+            Editable = false;
         }
         field(16; "Total Price"; Decimal)
         {
             Caption = 'Total Price';
             Editable = False;
+        }
+        field(17; "Duration"; Duration)
+        {
+            Caption = 'Duration';
+
+            trigger OnValidate();
+            begin
+                EndingTime := StartingTime + Duration;
+                "Total Price" := "Unit Price" * Duration / 3600000;
+            end;
         }
     }
 
@@ -118,11 +141,5 @@ table 50002 "Conference ASD"
                 ConferenceSetupASD.TestField(ConferenceRegNos);
                 NoSeriesManagement.InitSeries(ConferenceSetupASD.ConferenceRegNos, Rec.DocumentNoSeries, 0D, DocumentNo, DocumentNoSeries);
             end;
-    end;
-
-    procedure ValidateTimeOrder()
-    begin
-        if "StartingTime" > "EndingTime" then
-            Error('Ending Time cannot be earlier than Starting Time.');
     end;
 }

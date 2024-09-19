@@ -91,9 +91,12 @@ table 50005 "Conference Location ASD"
     }
     keys
     {
-        key(PK; "No.", "Address")
+        key(PK; "No.")
         {
             Clustered = true;
+        }
+        key(Key1; Address)
+        {
         }
     }
 

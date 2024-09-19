@@ -1,24 +1,42 @@
 codeunit 50000 "Conference Jnl.-Check Line ASD"
 {
-    TableNo = "Conference Journal ASD";
+    TableNo = "Conference ASD";
+
+    var
+        ConferenceLineASD: Record "Conference Line ASD";
 
     trigger OnRun()
     begin
-        DoCheck(Rec); // Do the checks here
+        DoCheck(Rec, ConferenceLineASD); // Do the checks here
     end;
 
-    internal procedure DoCheck(LocalConferenceJournal: Record "Conference Journal ASD")
+    internal procedure DoCheck(ConferenceASD: Record "Conference ASD"; ConferenceLineASD: Record "Conference Line ASD")
     begin
-        LocalConferenceJournal.TestField("Document No.");
-        LocalConferenceJournal.TestField("Posting Date");
-        LocalConferenceJournal.TestField("Document Date");
-        LocalConferenceJournal.TestField("Document Date");
-        LocalConferenceJournal.TestField("Gen. Prod. Posting Group");
-        LocalConferenceJournal.TestField("Gen. Bus. Posting Group");
+        ConferenceASD.TestField(DocumentNo);
+        ConferenceASD.TestField(PostingDate);
+        ConferenceASD.TestField(DocumentDate);
+        ConferenceLineASD.TestField("Gen. Prod. Posting Group");
+        ConferenceLineASD.TestField("Gen. Bus. Posting Group");
+        case ConferenceLineASD.type of
+            ConferenceLineASD.type::Item:
+                ConferenceLineASD.TestField("No.");
+            ConferenceLineASD.type::Resource:
+                ConferenceLineASD.TestField("No.");
+        end;
+        ConferenceLineASD.TestField("No.");
+        ConferenceLineASD.TestField(Description);
+        ConferenceLineASD.TestField(Quantity);
+        ConferenceLineASD.TestField("Unit of Measure Code");
+        ConferenceLineASD.TestField("Unit Price");
+        ConferenceLineASD.TestField(Amount);
+        ConferenceLineASD.TestField("Line Discount %");
+        ConferenceLineASD.TestField("Gen. Prod. Posting Group");
+        ConferenceLineASD.TestField("Gen. Bus. Posting Group");
+        ConferenceLineASD.TestField("VAT Prod. Posting Group");
 
-        CheckPostingDate(LocalConferenceJournal."Posting Date");
-        CheckDocumentDate(LocalConferenceJournal."Document Date");
-        CheckQty(LocalConferenceJournal.Quantity);
+        CheckPostingDate(ConferenceASD.PostingDate);
+        CheckDocumentDate(ConferenceASD.DocumentDate);
+        CheckQty(ConferenceLineASD.Quantity);
     end;
 
     local procedure CheckPostingDate(LocalPostingDate: Date)

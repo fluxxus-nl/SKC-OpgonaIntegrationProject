@@ -1,10 +1,5 @@
 codeunit 50000 "Conference Jnl.-Check Line ASD"
 {
-    TableNo = "Conference ASD";
-
-    var
-        ConferenceLineASD: Record "Conference Line ASD";
-
     internal procedure DoCheck(ConferenceASD: Record "Conference ASD"; ConferenceLineASD: Record "Conference Line ASD")
     begin
         ConferenceASD.TestField(Customer);

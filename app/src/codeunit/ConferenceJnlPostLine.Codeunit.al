@@ -12,7 +12,7 @@ codeunit 50001 "Conference Jnl.-Post Line ASD"
         GetConferenceLines(Rec);
     end;
 
-    internal procedure GetConferenceLines(ConferenceASD: Record "Conference ASD")
+    procedure GetConferenceLines(ConferenceASD: Record "Conference ASD")
     begin
         ConferenceLineASD.Reset();
         ConferenceLineASD.SetRange("Document No.", ConferenceASD.DocumentNo);
@@ -22,19 +22,15 @@ codeunit 50001 "Conference Jnl.-Post Line ASD"
             until ConferenceLineASD.Next() = 0;
     end;
 
-    internal procedure Code(ConferenceASD: Record "Conference ASD"; ConferenceLineASD: Record "Conference Line ASD")
+    local procedure Code(ConferenceASD: Record "Conference ASD"; ConferenceLineASD: Record "Conference Line ASD")
     begin
-        //Post Document to Journal Process
         PostDocumentToJournal(ConferenceASD, ConferenceLineASD);
-        //Check if everything is working correctly
         ConferenceJnlCheckLineASD.DoCheck(ConferenceASD, ConferenceLineASD);
-        //Post Journal to Ledger
         PostJournalToLedger(ConferenceJournalASD);
     end;
 
-    internal procedure PostDocumentToJournal(ConferenceASD: Record "Conference ASD"; ConferenceLineASD: Record "Conference Line ASD")
+    local procedure PostDocumentToJournal(ConferenceASD: Record "Conference ASD"; ConferenceLineASD: Record "Conference Line ASD")
     begin
-        ConferenceJournalASD.Init();
         ConferenceJournalASD."Posting Date" := ConferenceASD.PostingDate;
         ConferenceJournalASD."Entry Type" := ConferenceLineASD.type;
         ConferenceJournalASD."Document No." := ConferenceASD.DocumentNo;
@@ -48,13 +44,11 @@ codeunit 50001 "Conference Jnl.-Post Line ASD"
         ConferenceJournalASD."Gen. Prod. Posting Group" := ConferenceLineASD."Gen. Prod. Posting Group";
         ConferenceJournalASD."Gen. Bus. Posting Group" := ConferenceLineASD."Gen. Bus. Posting Group";
         ConferenceJournalASD."VAT Prod. Posting Group" := ConferenceLineASD."VAT Prod. Posting Group";
-        ConferenceJournalASD."Source Code" := ConferenceASD."Source Code";
-        ConferenceJournalASD.Insert(false);
-
     end;
 
-    internal procedure PostJournalToLedger(ConferenceJournalASD: Record "Conference Journal ASD")
+    local procedure PostJournalToLedger(ConferenceJournalASD: Record "Conference Journal ASD")
+    var
+        ConferenceLedgerEntryASD: Record "Conference Ledger Entry ASD";
     begin
-        //Post Conference Journal into the Conference Ledger
     end;
 }

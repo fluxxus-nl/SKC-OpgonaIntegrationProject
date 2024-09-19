@@ -142,4 +142,15 @@ table 50002 "Conference ASD"
                 NoSeriesManagement.InitSeries(ConferenceSetupASD.ConferenceRegNos, Rec.DocumentNoSeries, 0D, DocumentNo, DocumentNoSeries);
             end;
     end;
+
+    procedure ValidateTimeOrder()
+    begin
+        if "StartingTime" > "EndingTime" then
+            Error('Ending Time cannot be earlier than Starting Time.');
+    end;
+
+    procedure TestStatusOpen()
+    begin
+        TestField(Status, Status::Closed);
+    end;
 }

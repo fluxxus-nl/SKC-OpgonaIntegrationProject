@@ -25,11 +25,12 @@ codeunit 50001 "Conference Jnl.-Post Line ASD"
     local procedure Code(ConferenceASD: Record "Conference ASD"; ConferenceLineASD: Record "Conference Line ASD")
     begin
         PostDocumentToJournal(ConferenceASD, ConferenceLineASD);
-        ConferenceJnlCheckLineASD.DoCheck(ConferenceJournalASD);
+        ConferenceJnlCheckLineASD.DoCheck(ConferenceASD, ConferenceLineASD);
     end;
 
     local procedure PostDocumentToJournal(ConferenceASD: Record "Conference ASD"; ConferenceLineASD: Record "Conference Line ASD")
     begin
+        ConferenceJournalASD.Init();
         ConferenceJournalASD."Posting Date" := ConferenceASD.PostingDate;
         ConferenceJournalASD."Entry Type" := ConferenceLineASD.type;
         ConferenceJournalASD."Document No." := ConferenceASD.DocumentNo;
@@ -43,9 +44,9 @@ codeunit 50001 "Conference Jnl.-Post Line ASD"
         ConferenceJournalASD."Gen. Prod. Posting Group" := ConferenceLineASD."Gen. Prod. Posting Group";
         ConferenceJournalASD."Gen. Bus. Posting Group" := ConferenceLineASD."Gen. Bus. Posting Group";
         ConferenceJournalASD."VAT Prod. Posting Group" := ConferenceLineASD."VAT Prod. Posting Group";
-        //Post Conference and Conference Lines into the Journal
-        Message('Post Document To Journal step reached');
+        ConferenceJournalASD.Insert(false);
 
+        //Post Conference and Conference Lines into the Journal
         PostJournalToLedger(ConferenceJournalASD);
     end;
 

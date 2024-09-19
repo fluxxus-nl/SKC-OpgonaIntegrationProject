@@ -97,7 +97,6 @@ page 50012 "Posted Conference Card ASD"
             }
         }
     }
-}
 
     actions
     {
@@ -121,6 +120,7 @@ page 50012 "Posted Conference Card ASD"
                 Tooltip = 'Find all entries and documents that exist for the document number and posting date on the selected entry or document.';
                 image = Navigate;
                 ShortcutKey = 'Shift+ctrl+I';
+
                 trigger OnAction()
                 var
                     Navigate: Page Navigate;

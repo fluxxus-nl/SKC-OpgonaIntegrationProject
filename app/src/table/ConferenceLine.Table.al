@@ -99,13 +99,8 @@ table 50003 "Conference Line ASD"
             Caption = 'Unit Price';
 
             trigger OnValidate()
-            var
-                IsHandled: Boolean;
             begin
-                IsHandled := false;
-                OnBeforeValidateUnitPrice(Rec, CurrFieldNo, IsHandled);
-                if not IsHandled then
-                    Validate("Line Discount %");
+                Validate("Line Discount %");
             end;
         }
         field(12; Quantity; Integer)
@@ -189,10 +184,4 @@ table 50003 "Conference Line ASD"
         "Discount Amount" := ("Amount" * "Line Discount %") / 100;
         "Amount" := "Amount" - "Discount Amount";
     end;
-
-    [IntegrationEvent(false, false)]
-    local procedure OnBeforeValidateUnitPrice(var SalesLine: Record "Conference Line ASD"; CurrentFieldNo: Integer; var IsHandled: Boolean)
-    begin
-    end;
-
 }

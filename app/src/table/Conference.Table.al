@@ -93,18 +93,31 @@ table 50002 "Conference ASD"
             FieldClass = FlowFilter;
             TableRelation = "Dimension Value".Code where("Global Dimension No." = const(2));
         }
-        field(15; "Unit Price"; Decimal)
+        field(15; "User ID"; Code[50])
+        {
+            Caption = 'User ID';
+            DataClassification = CustomerContent;
+            TableRelation = User."User Name";
+        }
+        field(16; "Source Code"; Code[10])
+        {
+            Caption = 'Source Code';
+            DataClassification = CustomerContent;
+            Editable = false;
+            TableRelation = "Source Code";
+        }
+        field(17; "Unit Price"; Decimal)
         {
             Caption = 'Unit Price';
             AutoFormatType = 0;
             Editable = false;
         }
-        field(16; "Total Price"; Decimal)
+        field(18; "Total Price"; Decimal)
         {
             Caption = 'Total Price';
             Editable = False;
         }
-        field(17; "Duration"; Duration)
+        field(19; "Duration"; Duration)
         {
             Caption = 'Duration';
 

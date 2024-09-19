@@ -98,10 +98,6 @@ table 50010 "Conference Ledger Entry ASD"
             Caption = 'No. Series';
             TableRelation = "No. Series";
         }
-        field(30; "Source Type"; Enum "Res. Journal Line Source Type")
-        {
-            Caption = 'Source Type';
-        }
     }
 
     keys

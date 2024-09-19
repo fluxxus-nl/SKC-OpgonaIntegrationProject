@@ -36,16 +36,34 @@ page 50000 "Conference Location List ASD"
         {
             action(CreateConferenceDocument)
             {
-                Caption = 'Create Conference Document (TEST)';
+                Caption = 'Create New Conference Document';
                 ToolTip = 'Specifies the Create Conference Document action';
                 ApplicationArea = All;
                 Scope = Repeater;
-                Image = Create;
+                Image = NewSalesInvoice;
+                RunObject = page "Conference Card ASD";
 
                 trigger OnAction();
+                var
+                    conference: record "Conference ASD";
                 begin
-                    Message('in progress');
+                    if Rec."No." <> '' then begin
+                        Conference.Init();
+                        Conference.ConferenceLocation := Rec."No.";
+                        if Rec."Unit Price" <> 0 then
+                            conference."Unit Price" := Rec."Unit Price";
+                        Conference.Insert(true);
+                        PAGE.Run(Page::"Conference Card ASD", Conference);
+                    end;
                 end;
+            }
+        }
+        area(Promoted)
+        {
+            group(Category_Process)
+            {
+                Caption = 'Create';
+                actionref(Create; CreateConferenceDocument) { }
             }
         }
     }

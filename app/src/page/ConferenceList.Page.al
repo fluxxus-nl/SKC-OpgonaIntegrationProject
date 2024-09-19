@@ -75,6 +75,15 @@ page 50004 "Conference List ASD"
                     Message('in progress');
                 end;
             }
+            action(Statistics)
+            {
+                Caption = 'Statistics';
+                ToolTip = 'View Statistical Information';
+                image = Statistics;
+                RunObject = Page "Conference Statistics ASD";
+                RunPageLink = DocumentNo = field(DocumentNo), DocumentDate = field(DocumentDate);
+                ShortcutKey = 'f7';
+            }
         }
         area(Promoted)
         {
@@ -82,6 +91,7 @@ page 50004 "Conference List ASD"
             {
                 Caption = 'Process';
                 actionref(Post_Promoted; Post) { }
+                actionref(Statistics_Promoted; Statistics) { }
             }
         }
     }

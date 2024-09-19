@@ -14,12 +14,12 @@ table 50011 "Conference Register ASD"
         field(2; "From Entry No."; Integer)
         {
             Caption = 'From Entry No.';
-            TableRelation = "Res. Ledger Entry";
+            TableRelation = "Conference Ledger Entry ASD";
         }
         field(3; "To Entry No."; Integer)
         {
             Caption = 'To Entry No.';
-            TableRelation = "Res. Ledger Entry";
+            TableRelation = "Conference Ledger Entry ASD";
         }
         field(4; "Creation Date"; Date)
         {

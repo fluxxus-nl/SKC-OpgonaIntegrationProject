@@ -125,4 +125,9 @@ table 50002 "Conference ASD"
         if "StartingTime" > "EndingTime" then
             Error('Ending Time cannot be earlier than Starting Time.');
     end;
+
+    procedure TestStatusOpen()
+    begin
+        TestField(Status, Status::Closed);
+    end;
 }

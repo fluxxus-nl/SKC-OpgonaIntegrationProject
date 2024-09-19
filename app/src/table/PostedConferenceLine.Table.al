@@ -73,10 +73,6 @@ table 50009 "Posted Conference Line ASD"
             MaxValue = 100;
             MinValue = 0;
         }
-        field(18; "Discount Amount"; Decimal)
-        {
-            Caption = 'Discount % Amount';
-        }
         field(14; Description; Text[100])
         {
             Caption = 'Description';
@@ -100,18 +96,29 @@ table 50009 "Posted Conference Line ASD"
             Caption = 'Unit of measure code';
             TableRelation = "Unit of Measure";
         }
-        field(29; "User ID"; Code[50])
+        field(18; "Discount Amount"; Decimal)
+        {
+            Caption = 'Discount % Amount';
+        }
+        field(19; "Gen. Bus. Posting Group"; Code[20])
+        {
+            Caption = 'Gen. Bus. Posting Group';
+        }
+        field(20; "Gen. Prod. Posting Group"; Code[20])
+        {
+            Caption = 'Gen. Prod. Posting Group';
+        }
+        field(21; "VAT Prod. Posting Group"; Code[20])
+        {
+            Caption = 'VAT Prod. Posting Group';
+        }
+        field(22; "User ID"; Code[50])
         {
             Caption = 'User ID';
-            DataClassification = CustomerContent;
-            TableRelation = User."User Name";
         }
-        field(30; "Source Code"; Code[10])
+        field(23; "Source Code"; Code[10])
         {
             Caption = 'Source Code';
-            DataClassification = CustomerContent;
-            Editable = false;
-            TableRelation = "Source Code";
         }
     }
     keys

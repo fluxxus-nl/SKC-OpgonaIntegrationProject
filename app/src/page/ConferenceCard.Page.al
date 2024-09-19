@@ -95,8 +95,11 @@ page 50003 "Conference Card ASD"
                 trigger OnAction()
                 var
                     ConferenceJnlPostLineASD: Codeunit "Conference Jnl.-Post Line ASD";
+                    ConferenceDocumentMgmtASD: Codeunit "Conference Document Mgmt ASD";
                 begin
-                    ConferenceJnlPostLineASD.Run(Rec);
+                    Rec.TestStatusOpen();
+                    //ConferenceJnlPostLineASD.Run(Rec);
+                    ConferenceDocumentMgmtASD.TransferConferenceDocument(Rec);
                 end;
             }
         }

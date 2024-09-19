@@ -23,17 +23,20 @@ page 50003 "Conference Card ASD"
                 {
                     ApplicationArea = All;
                     Editable = true;
+                    ShowMandatory = true;
                 }
                 field(ConferenceLocation; Rec.ConferenceLocation)
                 {
                     ApplicationArea = All;
                     Editable = true;
                     LookupPageId = "Conference Location List ASD";
+                    ShowMandatory = true;
                 }
                 field(DocumentDate; Rec.DocumentDate)
                 {
                     ApplicationArea = All;
                     Editable = true;
+                    ShowMandatory = true;
                 }
                 field(Status; Rec.Status)
                 {
@@ -44,16 +47,19 @@ page 50003 "Conference Card ASD"
                 {
                     ApplicationArea = All;
                     Editable = true;
+                    ShowMandatory = true;
                 }
                 field("Unit Price"; Rec."Unit Price")
                 {
+                    ShowMandatory = true;
+                    Editable = true;
                     ToolTip = 'Specifies the value of the Unit Price field.', Comment = '%';
                 }
                 field("Total Price"; Rec."Total Price")
                 {
+                    Editable = true;
                     ToolTip = 'Specifies the value of the Total Price field.', Comment = '%';
                 }
-
             }
             group(Booking)
             {
@@ -65,7 +71,6 @@ page 50003 "Conference Card ASD"
                 field(EndingDate; Rec.EndingDate)
                 {
                     ApplicationArea = All;
-                    Editable = true;
                     Visible = false;
                 }
                 field(StartingTime; Rec.StartingTime)
@@ -76,6 +81,7 @@ page 50003 "Conference Card ASD"
                 field(EndingTime; Rec.EndingTime)
                 {
                     ApplicationArea = All;
+                    Editable = false;
                 }
                 field(NoAttendees; Rec.NoAttendees)
                 {
@@ -87,7 +93,6 @@ page 50003 "Conference Card ASD"
                     ToolTip = 'Specifies the value of the Duration field.', Comment = '%';
                     ApplicationArea = All;
                 }
-
             }
             part(ConferenceRegistrationLines; "Conference Lines ASD")
             {
@@ -113,7 +118,7 @@ page 50003 "Conference Card ASD"
                     ConferenceDocumentMgmtASD: Codeunit "Conference Document Mgmt ASD";
                 begin
                     Rec.TestStatusOpen();
-                    //ConferenceJnlPostLineASD.Run(Rec);
+                    ConferenceJnlPostLineASD.Run(Rec);
                     ConferenceDocumentMgmtASD.TransferConferenceDocument(Rec);
                 end;
             }
@@ -127,4 +132,14 @@ page 50003 "Conference Card ASD"
             }
         }
     }
+
+    trigger OnAfterGetRecord()
+    var
+        SourceCodeSetup: Record "Source Code Setup";
+    begin
+        if Rec."Source Code" <> '' then begin
+            SourceCodeSetup.Get();
+            Rec."Source Code" := SourceCodeSetup."Conference Location ASD";
+        end;
+    end;
 }

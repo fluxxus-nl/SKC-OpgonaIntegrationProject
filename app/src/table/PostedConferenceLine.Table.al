@@ -116,11 +116,8 @@ table 50009 "Posted Conference Line ASD"
         {
             Caption = 'User ID';
         }
-        field(23; "Source Code"; Code[10])
-        {
-            Caption = 'Source Code';
-        }
     }
+
     keys
     {
         key(Key1; "Document No.", "Line No.")

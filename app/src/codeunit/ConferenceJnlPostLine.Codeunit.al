@@ -80,7 +80,7 @@ codeunit 50001 "Conference Jnl.-Post Line ASD"
         ConferenceRegister.Modify();
 
         ConferenceASD.Get(ConferenceJournalASD."Document No.");
-        //ConferenceASD.TestField(Blocked, false);
+        ConferenceASD.TestField(Blocked, false);
 
         ConferenceLedgerEntryASD.Init();
         ConferenceLedgerEntryASD.CopyFromConferenceJnlLine(ConferenceJournalASD);

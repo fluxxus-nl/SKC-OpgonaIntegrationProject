@@ -54,6 +54,10 @@ page 50012 "Posted Conference Card ASD"
                 {
                     ToolTip = 'Specifies the value of the Total Price field.', Comment = '%';
                 }
+                field(Blocked; Rec.Blocked)
+                {
+                    ToolTip = 'Specifies the value of the Blocked field.', Comment = '%';
+                }
             }
             group(Booking)
             {

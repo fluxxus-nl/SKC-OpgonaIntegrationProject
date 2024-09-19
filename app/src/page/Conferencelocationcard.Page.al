@@ -88,8 +88,17 @@ page 50002 "Conference Location Card ASD"
                 Image = Create;
 
                 trigger OnAction();
+                var
+                    ConferenceASD: record "Conference ASD";
                 begin
-                    Message('in progress');
+                    if Rec."No." <> '' then begin
+                        ConferenceASD.Init();
+                        ConferenceASD.ConferenceLocation := Rec."No.";
+                        if Rec."Unit Price" <> 0 then
+                            ConferenceASD."Unit Price" := Rec."Unit Price";
+                        ConferenceASD.Insert(true);
+                        PAGE.Run(Page::"Conference Card ASD", ConferenceASD);
+                    end;
                 end;
             }
         }

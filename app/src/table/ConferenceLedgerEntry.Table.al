@@ -125,7 +125,7 @@ table 50010 "Conference Ledger Entry ASD"
         Rec."Document No." := ConferenceJournalASD."Document No.";
         Rec."Posting Date" := ConferenceJournalASD."Posting Date";
         Rec."Document Date" := ConferenceJournalASD."Document Date";
-        Rec."Document No." := ConferenceJournalASD."Document No.";
+        //document no duplicate insert removed
         Rec.Description := ConferenceJournalASD.Description;
         Rec.Quantity := ConferenceJournalASD.Quantity;
         Rec."Unit Price" := ConferenceJournalASD."Unit Price";

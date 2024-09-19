@@ -2,7 +2,7 @@ pageextension 50000 "Source Code Setup Ext ASD" extends "Source Code Setup"
 {
     layout
     {
-        addafter("Compress Res. Ledger")
+        addafter("Resources")
         {
             group("Conference ASD")
             {

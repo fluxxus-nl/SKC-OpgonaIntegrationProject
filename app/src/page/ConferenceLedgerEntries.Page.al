@@ -13,65 +13,68 @@ page 50020 "Conference Ledger Entries ASD"
     {
         area(content)
         {
-            field("Entry Type"; Rec."Entry Type")
+            repeater(Lists)
             {
-                ToolTip = 'Specifies the value of the Entry Type field.';
-            }
-            field("Document No."; Rec."Document No.")
-            {
-                ToolTip = 'Specifies the value of the Document No. field.';
-            }
-            field("Journal Batch Name"; Rec."Journal Batch Name")
-            {
-                ToolTip = 'Specifies the value of the Journal Batch Name field.';
-            }
-            field("Resource No."; Rec."Resource No.")
-            {
-                ToolTip = 'Specifies the value of the Resource No. field.';
-            }
-            field("Source Code"; Rec."Source Code")
-            {
-                ToolTip = 'Specifies the value of the Source Code field.';
-            }
-            field("Unit Price"; Rec."Unit Price")
-            {
-                ToolTip = 'Specifies the value of the Unit Price field.';
-            }
-            field("Total Price"; Rec."Total Price")
-            {
-                ToolTip = 'Specifies the value of the Total Price field.';
-            }
-            field("Unit of Measure Code"; Rec."Unit of Measure Code")
-            {
-                ToolTip = 'Specifies the value of the Unit of Measure Code field.';
-            }
-            field("User ID"; Rec."User ID")
-            {
-                ToolTip = 'Specifies the value of the User ID field.';
-            }
-            field("Posting Date"; Rec."Posting Date")
-            {
-                ToolTip = 'Specifies the value of the Posting Date field.';
-            }
-            field(Description; Rec.Description)
-            {
-                ToolTip = 'Specifies the value of the Description field.';
-            }
-            field("Document Date"; Rec."Document Date")
-            {
-                ToolTip = 'Specifies the value of the Document Date field.';
-            }
-            field("Entry No."; Rec."Entry No.")
-            {
-                ToolTip = 'Specifies the value of the Entry No. field.';
-            }
-            field("Gen. Bus. Posting Group"; Rec."Gen. Bus. Posting Group")
-            {
-                ToolTip = 'Specifies the value of the Gen. Bus. Posting Group field.';
-            }
-            field("VAT. Bus. Posting Group"; Rec."VAT. Bus. Posting Group")
-            {
-                ToolTip = 'Specifies the value of the VAT. Bus. Posting Group field.';
+                field("Entry Type"; Rec."Entry Type")
+                {
+                    ToolTip = 'Specifies the value of the Entry Type field.';
+                }
+                field("Document No."; Rec."Document No.")
+                {
+                    ToolTip = 'Specifies the value of the Document No. field.';
+                }
+                field("Journal Batch Name"; Rec."Journal Batch Name")
+                {
+                    ToolTip = 'Specifies the value of the Journal Batch Name field.';
+                }
+                field("Resource No."; Rec."Resource No.")
+                {
+                    ToolTip = 'Specifies the value of the Resource No. field.';
+                }
+                field("Source Code"; Rec."Source Code")
+                {
+                    ToolTip = 'Specifies the value of the Source Code field.';
+                }
+                field("Unit Price"; Rec."Unit Price")
+                {
+                    ToolTip = 'Specifies the value of the Unit Price field.';
+                }
+                field("Total Price"; Rec."Total Price")
+                {
+                    ToolTip = 'Specifies the value of the Total Price field.';
+                }
+                field("Unit of Measure Code"; Rec."Unit of Measure Code")
+                {
+                    ToolTip = 'Specifies the value of the Unit of Measure Code field.';
+                }
+                field("User ID"; Rec."User ID")
+                {
+                    ToolTip = 'Specifies the value of the User ID field.';
+                }
+                field("Posting Date"; Rec."Posting Date")
+                {
+                    ToolTip = 'Specifies the value of the Posting Date field.';
+                }
+                field(Description; Rec.Description)
+                {
+                    ToolTip = 'Specifies the value of the Description field.';
+                }
+                field("Document Date"; Rec."Document Date")
+                {
+                    ToolTip = 'Specifies the value of the Document Date field.';
+                }
+                field("Entry No."; Rec."Entry No.")
+                {
+                    ToolTip = 'Specifies the value of the Entry No. field.';
+                }
+                field("Gen. Bus. Posting Group"; Rec."Gen. Bus. Posting Group")
+                {
+                    ToolTip = 'Specifies the value of the Gen. Bus. Posting Group field.';
+                }
+                field("VAT. Bus. Posting Group"; Rec."VAT. Bus. Posting Group")
+                {
+                    ToolTip = 'Specifies the value of the VAT. Bus. Posting Group field.';
+                }
             }
         }
 

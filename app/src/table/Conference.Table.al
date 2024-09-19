@@ -12,13 +12,13 @@ table 50002 "Conference ASD"
         }
         field(2; Customer; Code[20])
         {
-            Caption = 'Customer';
+            Caption = 'Customer No.';
             Tooltip = 'Specifies the value of the Customer field';
             TableRelation = Customer."No.";
         }
         field(3; ConferenceLocation; Code[20])
         {
-            Caption = 'Conference Location';
+            Caption = 'Conference Location No.';
             Tooltip = 'Specifies the value of the Conference Location field';
             TableRelation = "Conference Location ASD"."No.";
             trigger OnValidate()
@@ -44,7 +44,7 @@ table 50002 "Conference ASD"
         }
         field(6; StartingTime; Time)
         {
-            Caption = 'Starting Time';
+            Caption = 'Conference Date';
             Tooltip = 'Specifies the value of the Starting Time field';
         }
         field(7; EndingTime; Time)

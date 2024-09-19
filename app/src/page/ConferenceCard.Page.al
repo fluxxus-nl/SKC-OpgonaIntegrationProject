@@ -61,6 +61,12 @@ page 50003 "Conference Card ASD"
                     ToolTip = 'Specifies the value of the Total Price field.', Comment = '%';
                 }
             }
+
+            part(ConferenceRegistrationLines; "Conference Lines ASD")
+            {
+                ApplicationArea = All;
+                SubPageLink = "Document No." = field(DocumentNo);
+            }
             group(Booking)
             {
                 field(StartingDate; Rec.StartingDate)
@@ -78,6 +84,11 @@ page 50003 "Conference Card ASD"
                     ApplicationArea = All;
                     Editable = true;
                 }
+                field("Duration"; Rec."Duration")
+                {
+                    ToolTip = 'Specifies the value of the Duration field.', Comment = '%';
+                    ApplicationArea = All;
+                }
                 field(EndingTime; Rec.EndingTime)
                 {
                     ApplicationArea = All;
@@ -88,16 +99,6 @@ page 50003 "Conference Card ASD"
                     ApplicationArea = All;
                     Editable = true;
                 }
-                field("Duration"; Rec."Duration")
-                {
-                    ToolTip = 'Specifies the value of the Duration field.', Comment = '%';
-                    ApplicationArea = All;
-                }
-            }
-            part(ConferenceRegistrationLines; "Conference Lines ASD")
-            {
-                ApplicationArea = All;
-                SubPageLink = "Document No." = field(DocumentNo);
             }
         }
     }

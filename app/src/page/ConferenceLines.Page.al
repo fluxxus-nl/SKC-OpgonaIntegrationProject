@@ -65,18 +65,6 @@ page 50007 "Conference Lines ASD"
                 {
                     ToolTip = 'Specifies the value of the Amount field.', Comment = '%';
                 }
-                field(Registered; Rec.Registered)
-                {
-                    ToolTip = 'Specifies the value of the Registered field.', Comment = '%';
-                }
-                field("Registration Date"; Rec."Registration Date")
-                {
-                    ToolTip = 'Specifies the value of the Registration Date field.', Comment = '%';
-                }
-                field("To Invoice"; Rec."To Invoice")
-                {
-                    ToolTip = 'Specifies the value of the To Invoice field.', Comment = '%';
-                }
                 field("Gen. Bus. Posting Group"; Rec."Gen. Bus. Posting Group")
                 {
                     ToolTip = 'Specifies the value of the Gen. Bus. Posting Group field.', Comment = '%';

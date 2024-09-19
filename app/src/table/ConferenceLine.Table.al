@@ -83,12 +83,18 @@ table 50003 "Conference Line ASD"
                             Item.Get(Rec."No.");
                             rec.Description := Item.Description;
                             rec."Unit Price" := Item."Unit Price";
+                            rec."Unit of Measure Code" := item."Base Unit of Measure";
+                            rec."Gen. Prod. Posting Group" := item."Gen. Prod. Posting Group";
+                            rec."VAT Prod. Posting Group" := item."VAT Prod. Posting Group";
                         end;
                     Rec.Type::Resource:
                         begin
                             Resource.Get(Rec."No.");
                             rec.Description := Resource.Name;
                             rec."Unit Price" := Resource."Unit Price";
+                            rec."Unit of Measure Code" := Resource."Base Unit of Measure";
+                            rec."Gen. Prod. Posting Group" := Resource."Gen. Prod. Posting Group";
+                            rec."VAT Prod. Posting Group" := Resource."VAT Prod. Posting Group";
                         end;
                 end;
             end;
@@ -141,7 +147,7 @@ table 50003 "Conference Line ASD"
         }
         field(18; "Discount Amount"; Decimal)
         {
-            Caption = 'Discount Amount';
+            Caption = 'Line Discount % Amount';
         }
         field(19; "Gen. Bus. Posting Group"; Code[20])
         {

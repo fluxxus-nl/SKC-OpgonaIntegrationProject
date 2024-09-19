@@ -31,6 +31,11 @@ page 50014 "Posted Conference List ASD"
                     ApplicationArea = All;
                     Editable = true;
                 }
+                field(NoAttendees; Rec.NoAttendees)
+                {
+                    ApplicationArea = All;
+                    Editable = true;
+                }
                 field(StartingDate; Rec.StartingDate)
                 {
                     ApplicationArea = All;
@@ -47,11 +52,6 @@ page 50014 "Posted Conference List ASD"
                     Editable = true;
                 }
                 field(PostingDate; Rec.PostingDate)
-                {
-                    ApplicationArea = All;
-                    Editable = true;
-                }
-                field(NoAttendees; Rec.NoAttendees)
                 {
                     ApplicationArea = All;
                     Editable = true;

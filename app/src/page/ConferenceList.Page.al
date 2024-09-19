@@ -45,11 +45,6 @@ page 50004 "Conference List ASD"
                     ApplicationArea = All;
                     Editable = true;
                 }
-                field(PostingDate; Rec.PostingDate)
-                {
-                    ApplicationArea = All;
-                    Editable = true;
-                }
                 field(NoAttendees; Rec.NoAttendees)
                 {
                     ApplicationArea = All;

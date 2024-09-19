@@ -49,6 +49,10 @@ page 50003 "Conference Card ASD"
                     Editable = true;
                     ShowMandatory = true;
                 }
+                field("VAT Bus. Posting Group"; Rec."VAT Bus. Posting Group")
+                {
+                    ToolTip = 'Specifies the value of the VAT Bus. Posting Group field.', Comment = '%';
+                }
                 field("Unit Price"; Rec."Unit Price")
                 {
                     ShowMandatory = true;

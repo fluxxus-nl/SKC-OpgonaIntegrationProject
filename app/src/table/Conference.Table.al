@@ -15,6 +15,14 @@ table 50002 "Conference ASD"
             Caption = 'Customer No.';
             Tooltip = 'Specifies the value of the Customer field';
             TableRelation = Customer."No.";
+            trigger OnValidate()
+            var
+                CustomerPostinggroup: record Customer;
+            begin
+                CustomerPostinggroup.get(Rec.Customer);
+                rec."VAT Bus. Posting Group" := CustomerPostinggroup."VAT Bus. Posting Group";
+                rec."Gen. Bus. Posting Group" := CustomerPostinggroup."Gen. Bus. Posting Group";
+            end;
         }
         field(3; ConferenceLocation; Code[20])
         {
@@ -122,6 +130,16 @@ table 50002 "Conference ASD"
                 "Total Price" := "Unit Price" * Duration / 3600000;
             end;
         }
+        field(20; "Gen. Bus. Posting Group"; Code[20])
+        {
+            Caption = 'Gen. Bus. Posting Group';
+            TableRelation = "Gen. Business Posting Group";
+        }
+        field(21; "VAT Bus. Posting Group"; Code[20])
+        {
+            Caption = 'VAT Bus. Posting Group';
+            TableRelation = "VAT Business Posting Group";
+        }
     }
 
     keys
@@ -148,7 +166,15 @@ table 50002 "Conference ASD"
             if ConferenceSetupASD.Get() then begin
                 ConferenceSetupASD.TestField(ConferenceRegNos);
                 NoSeriesManagement.InitSeries(ConferenceSetupASD.ConferenceRegNos, Rec.DocumentNoSeries, 0D, DocumentNo, DocumentNoSeries);
+                InitRecord();
             end;
+    end;
+
+    procedure InitRecord();
+    begin
+        if Rec."PostingDate" = 0D then
+            Rec."PostingDate" := WorkDate();
+        Rec."DocumentDate" := WorkDate();
     end;
 
     procedure ValidateTimeOrder()

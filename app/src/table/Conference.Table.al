@@ -46,13 +46,11 @@ table 50002 "Conference ASD"
         {
             Caption = 'Starting Time';
             Tooltip = 'Specifies the value of the Starting Time field';
-
         }
         field(7; EndingTime; Time)
         {
             Caption = 'Ending Time';
             Tooltip = 'Specifies the value of the Ending Time field';
-            Editable = false;
         }
         field(8; DocumentDate; Date)
         {
@@ -103,19 +101,16 @@ table 50002 "Conference ASD"
         {
             Caption = 'Source Code';
             DataClassification = CustomerContent;
-            Editable = false;
             TableRelation = "Source Code";
         }
         field(17; "Unit Price"; Decimal)
         {
             Caption = 'Unit Price';
             AutoFormatType = 0;
-            Editable = false;
         }
         field(18; "Total Price"; Decimal)
         {
             Caption = 'Total Price';
-            Editable = False;
         }
         field(19; "Duration"; Duration)
         {

@@ -1,6 +1,6 @@
 page 50000 "Conference Location List ASD"
 {
-    Caption = 'Conference Location List';
+    Caption = 'Conference Location';
     PageType = List;
     UsageCategory = Lists;
     ApplicationArea = All;

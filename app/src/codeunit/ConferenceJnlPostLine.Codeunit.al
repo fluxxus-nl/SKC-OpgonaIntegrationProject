@@ -24,8 +24,12 @@ codeunit 50001 "Conference Jnl.-Post Line ASD"
 
     internal procedure Code(ConferenceASD: Record "Conference ASD"; ConferenceLineASD: Record "Conference Line ASD")
     begin
+        //Post Document to Journal Process
         PostDocumentToJournal(ConferenceASD, ConferenceLineASD);
+        //Check if everything is working correctly
         ConferenceJnlCheckLineASD.DoCheck(ConferenceASD, ConferenceLineASD);
+        //Post Journal to Ledger
+        PostJournalToLedger(ConferenceJournalASD);
     end;
 
     internal procedure PostDocumentToJournal(ConferenceASD: Record "Conference ASD"; ConferenceLineASD: Record "Conference Line ASD")
@@ -44,6 +48,7 @@ codeunit 50001 "Conference Jnl.-Post Line ASD"
         ConferenceJournalASD."Gen. Prod. Posting Group" := ConferenceLineASD."Gen. Prod. Posting Group";
         ConferenceJournalASD."Gen. Bus. Posting Group" := ConferenceLineASD."Gen. Bus. Posting Group";
         ConferenceJournalASD."VAT Prod. Posting Group" := ConferenceLineASD."VAT Prod. Posting Group";
+        ConferenceJournalASD."Source Code" := ConferenceASD."Source Code";
         ConferenceJournalASD.Insert(false);
 
     end;

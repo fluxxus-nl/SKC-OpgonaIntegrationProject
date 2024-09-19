@@ -16,12 +16,4 @@ pageextension 50000 "Source Code Setup Ext ASD" extends "Source Code Setup"
             }
         }
     }
-
-    actions
-    {
-        // Add changes to page actions here
-    }
-
-    var
-        myInt: Integer;
 }

@@ -42,6 +42,7 @@ page 50007 "Conference Lines ASD"
                 field("Unit Price"; Rec."Unit Price")
                 {
                     ToolTip = 'Specifies the value of the Unit Price field.', Comment = '%';
+                    Editable = true;
                     trigger OnValidate()
                     begin
                         rec.RecalculateAmounts();

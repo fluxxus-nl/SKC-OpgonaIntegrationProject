@@ -5,18 +5,15 @@ codeunit 50000 "Conference Jnl.-Check Line ASD"
     var
         ConferenceLineASD: Record "Conference Line ASD";
 
-    trigger OnRun()
-    begin
-        DoCheck(Rec, ConferenceLineASD); // Do the checks here
-    end;
-
     internal procedure DoCheck(ConferenceASD: Record "Conference ASD"; ConferenceLineASD: Record "Conference Line ASD")
     begin
-        ConferenceASD.TestField(DocumentNo);
-        ConferenceASD.TestField(PostingDate);
+        ConferenceASD.TestField(Customer);
+        ConferenceASD.TestField(ConferenceLocation);
         ConferenceASD.TestField(DocumentDate);
-        ConferenceLineASD.TestField("Gen. Bus. Posting Group");
-        ConferenceLineASD.TestField("Gen. Prod. Posting Group");
+        ConferenceASD.TestField(PostingDate);
+        ConferenceASD.TestField(StartingDate);
+        ConferenceASD.TestField(StartingTime);
+        ConferenceASD.TestField(Duration);
         case ConferenceLineASD.type of
             ConferenceLineASD.type::Item:
                 ConferenceLineASD.TestField("No.");
@@ -24,14 +21,12 @@ codeunit 50000 "Conference Jnl.-Check Line ASD"
                 ConferenceLineASD.TestField("No.");
         end;
         ConferenceLineASD.TestField("No.");
-        ConferenceLineASD.TestField(Description);
-        ConferenceLineASD.TestField(Quantity);
         ConferenceLineASD.TestField("Unit of Measure Code");
+        ConferenceLineASD.TestField(Quantity);
         ConferenceLineASD.TestField("Unit Price");
         ConferenceLineASD.TestField(Amount);
-        ConferenceLineASD.TestField("Line Discount %");
-        ConferenceLineASD.TestField("Gen. Prod. Posting Group");
         ConferenceLineASD.TestField("Gen. Bus. Posting Group");
+        ConferenceLineASD.TestField("Gen. Prod. Posting Group");
         ConferenceLineASD.TestField("VAT Prod. Posting Group");
 
         CheckPostingDate(ConferenceASD.PostingDate);
@@ -64,5 +59,10 @@ codeunit 50000 "Conference Jnl.-Check Line ASD"
             Error(QuantityNotLessZeroErr);
         if LocalQty = 0 then
             Error(QuantityNotEqualZeroErr);
+    end;
+
+    local procedure GetResource()
+    begin
+
     end;
 }

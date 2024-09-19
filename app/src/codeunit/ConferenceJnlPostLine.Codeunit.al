@@ -12,7 +12,7 @@ codeunit 50001 "Conference Jnl.-Post Line ASD"
         GetConferenceLines(Rec);
     end;
 
-    procedure GetConferenceLines(ConferenceASD: Record "Conference ASD")
+    internal procedure GetConferenceLines(ConferenceASD: Record "Conference ASD")
     begin
         ConferenceLineASD.Reset();
         ConferenceLineASD.SetRange("Document No.", ConferenceASD.DocumentNo);
@@ -22,13 +22,13 @@ codeunit 50001 "Conference Jnl.-Post Line ASD"
             until ConferenceLineASD.Next() = 0;
     end;
 
-    local procedure Code(ConferenceASD: Record "Conference ASD"; ConferenceLineASD: Record "Conference Line ASD")
+    internal procedure Code(ConferenceASD: Record "Conference ASD"; ConferenceLineASD: Record "Conference Line ASD")
     begin
         PostDocumentToJournal(ConferenceASD, ConferenceLineASD);
         ConferenceJnlCheckLineASD.DoCheck(ConferenceASD, ConferenceLineASD);
     end;
 
-    local procedure PostDocumentToJournal(ConferenceASD: Record "Conference ASD"; ConferenceLineASD: Record "Conference Line ASD")
+    internal procedure PostDocumentToJournal(ConferenceASD: Record "Conference ASD"; ConferenceLineASD: Record "Conference Line ASD")
     begin
         ConferenceJournalASD.Init();
         ConferenceJournalASD."Posting Date" := ConferenceASD.PostingDate;
@@ -46,13 +46,10 @@ codeunit 50001 "Conference Jnl.-Post Line ASD"
         ConferenceJournalASD."VAT Prod. Posting Group" := ConferenceLineASD."VAT Prod. Posting Group";
         ConferenceJournalASD.Insert(false);
 
-        //Post Conference and Conference Lines into the Journal
-        PostJournalToLedger(ConferenceJournalASD);
     end;
 
-    local procedure PostJournalToLedger(ConferenceJournalASD: Record "Conference Journal ASD")
+    internal procedure PostJournalToLedger(ConferenceJournalASD: Record "Conference Journal ASD")
     begin
-        Message('Post Journal To Ledger step reached');
         //Post Conference Journal into the Conference Ledger
     end;
 }

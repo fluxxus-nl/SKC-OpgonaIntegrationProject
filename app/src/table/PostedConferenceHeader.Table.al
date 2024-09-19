@@ -96,21 +96,21 @@ table 50008 "Posted Conference Header ASD"
         }
         field(17; "Unit Price"; Decimal)
         {
-            Caption = 'Source Code';
+            Caption = 'Unit Price';
             DataClassification = CustomerContent;
             Editable = false;
             TableRelation = "Source Code";
         }
         field(18; "Total Price"; Decimal)
         {
-            Caption = 'Source Code';
+            Caption = 'Total Price';
             DataClassification = CustomerContent;
             Editable = false;
             TableRelation = "Source Code";
         }
         field(19; "Duration"; Duration)
         {
-            Caption = 'Source Code';
+            Caption = 'Duration';
             DataClassification = CustomerContent;
             Editable = false;
             TableRelation = "Source Code";

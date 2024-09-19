@@ -54,7 +54,10 @@ page 50012 "Posted Conference Card ASD"
                 {
                     ToolTip = 'Specifies the value of the Total Price field.', Comment = '%';
                 }
-
+                field("Source Code"; Rec."Source Code")
+                {
+                    ToolTip = 'Specifies the value of the Total Price field.', Comment = '%';
+                }
             }
             group(Booking)
             {
@@ -102,18 +105,6 @@ page 50012 "Posted Conference Card ASD"
     {
         area(Processing)
         {
-            action(Post)
-            {
-                Caption = 'Post';
-                ToolTip = 'Specifies the Post Action';
-                Image = Post;
-                ApplicationArea = All;
-
-                trigger OnAction()
-                begin
-                    Message('in progress');
-                end;
-            }
             action(FindEntries)
             {
                 Caption = 'Find Entries';
@@ -126,6 +117,7 @@ page 50012 "Posted Conference Card ASD"
                     Navigate: Page Navigate;
                 begin
                     Navigate.SetDoc(Rec.PostingDate, Rec.DocumentNo);
+                    Navigate.SetRec(Rec);
                     Navigate.Run();
                 end;
             }
@@ -136,7 +128,6 @@ page 50012 "Posted Conference Card ASD"
             group(Category_Process)
             {
                 Caption = 'Process';
-                actionref(Post_Promoted; Post) { }
                 actionref(FEntries; Findentries) { }
             }
         }

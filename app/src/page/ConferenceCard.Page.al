@@ -53,7 +53,10 @@ page 50003 "Conference Card ASD"
                 {
                     ToolTip = 'Specifies the value of the Total Price field.', Comment = '%';
                 }
-
+                field("Source Code"; Rec."Source Code")
+                {
+                    ToolTip = 'Specifies the value of the Total Price field.', Comment = '%';
+                }
             }
             group(Booking)
             {
@@ -87,7 +90,6 @@ page 50003 "Conference Card ASD"
                     ToolTip = 'Specifies the value of the Duration field.', Comment = '%';
                     ApplicationArea = All;
                 }
-
             }
             part(ConferenceRegistrationLines; "Conference Lines ASD")
             {
@@ -113,7 +115,7 @@ page 50003 "Conference Card ASD"
                     ConferenceDocumentMgmtASD: Codeunit "Conference Document Mgmt ASD";
                 begin
                     Rec.TestStatusOpen();
-                    //ConferenceJnlPostLineASD.Run(Rec);
+                    ConferenceJnlPostLineASD.Run(Rec);
                     ConferenceDocumentMgmtASD.TransferConferenceDocument(Rec);
                 end;
             }

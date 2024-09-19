@@ -136,7 +136,7 @@ table 50003 "Conference Line ASD"
         }
         field(17; "Unit of Measure Code"; Code[10])
         {
-            Caption = 'Unit of measure code';
+            Caption = 'Unit of Measure Code';
             TableRelation = "Unit of Measure";
         }
         field(18; "Discount Amount"; Decimal)

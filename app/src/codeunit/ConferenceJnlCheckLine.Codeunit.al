@@ -15,8 +15,8 @@ codeunit 50000 "Conference Jnl.-Check Line ASD"
         ConferenceASD.TestField(DocumentNo);
         ConferenceASD.TestField(PostingDate);
         ConferenceASD.TestField(DocumentDate);
-        ConferenceLineASD.TestField("Gen. Prod. Posting Group");
         ConferenceLineASD.TestField("Gen. Bus. Posting Group");
+        ConferenceLineASD.TestField("Gen. Prod. Posting Group");
         case ConferenceLineASD.type of
             ConferenceLineASD.type::Item:
                 ConferenceLineASD.TestField("No.");

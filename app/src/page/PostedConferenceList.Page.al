@@ -81,6 +81,20 @@ page 50014 "Posted Conference List ASD"
                     Message('in progress');
                 end;
             }
+            action(FindEntries)
+            {
+                Caption = 'Find Entries';
+                Tooltip = 'Find all entries and documents that exist for the document number and posting date on the selected entry or document.';
+                image = Navigate;
+                ShortcutKey = 'Shift+ctrl+I';
+                trigger OnAction()
+                var
+                    Navigate: Page Navigate;
+                begin
+                    Navigate.SetDoc(Rec.PostingDate, Rec.DocumentNo);
+                    Navigate.Run();
+                end;
+            }
         }
         area(Promoted)
         {
@@ -88,6 +102,7 @@ page 50014 "Posted Conference List ASD"
             {
                 Caption = 'Process';
                 actionref(Post_Promoted; Post) { }
+                actionref(FEntries; Findentries) { }
             }
         }
     }

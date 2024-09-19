@@ -11,6 +11,7 @@ page 50012 "Posted Conference Card ASD"
     {
         area(Content)
         {
+
             group(General)
             {
                 Caption = 'General';
@@ -30,37 +31,7 @@ page 50012 "Posted Conference Card ASD"
                     Editable = true;
                     LookupPageId = "Conference Location List ASD";
                 }
-                field(StartingDate; Rec.StartingDate)
-                {
-                    ApplicationArea = All;
-                    Editable = true;
-                }
-                field(EndingDate; Rec.EndingDate)
-                {
-                    ApplicationArea = All;
-                    Editable = true;
-                }
-                field(StartingTime; Rec.StartingTime)
-                {
-                    ApplicationArea = All;
-                    Editable = true;
-                }
-                field(EndingTime; Rec.EndingTime)
-                {
-                    ApplicationArea = All;
-                    Editable = true;
-                }
                 field(DocumentDate; Rec.DocumentDate)
-                {
-                    ApplicationArea = All;
-                    Editable = true;
-                }
-                field(PostingDate; Rec.PostingDate)
-                {
-                    ApplicationArea = All;
-                    Editable = true;
-                }
-                field(NoAttendees; Rec.NoAttendees)
                 {
                     ApplicationArea = All;
                     Editable = true;
@@ -70,14 +41,63 @@ page 50012 "Posted Conference Card ASD"
                     ApplicationArea = All;
                     Editable = true;
                 }
+                field(PostingDate; Rec.PostingDate)
+                {
+                    ApplicationArea = All;
+                    Editable = true;
+                }
+                field("Unit Price"; Rec."Unit Price")
+                {
+                    ToolTip = 'Specifies the value of the Unit Price field.', Comment = '%';
+                }
+                field("Total Price"; Rec."Total Price")
+                {
+                    ToolTip = 'Specifies the value of the Total Price field.', Comment = '%';
+                }
+
             }
-            part(PostedConferenceRegistrationLines; "Posted Conference Lines ASD")
+            group(Booking)
+            {
+                field(StartingDate; Rec.StartingDate)
+                {
+                    ApplicationArea = All;
+                    Editable = true;
+                }
+                field(EndingDate; Rec.EndingDate)
+                {
+                    ApplicationArea = All;
+                    Editable = true;
+                    Visible = false;
+                }
+                field(StartingTime; Rec.StartingTime)
+                {
+                    ApplicationArea = All;
+                    Editable = true;
+                }
+                field(EndingTime; Rec.EndingTime)
+                {
+                    ApplicationArea = All;
+                }
+                field(NoAttendees; Rec.NoAttendees)
+                {
+                    ApplicationArea = All;
+                    Editable = true;
+                }
+                field("Duration"; Rec."Duration")
+                {
+                    ToolTip = 'Specifies the value of the Duration field.', Comment = '%';
+                    ApplicationArea = All;
+                }
+
+            }
+            part(ConferenceRegistrationLines; "Conference Lines ASD")
             {
                 ApplicationArea = All;
                 SubPageLink = "Document No." = field(DocumentNo);
             }
         }
     }
+}
 
     actions
     {
@@ -95,6 +115,21 @@ page 50012 "Posted Conference Card ASD"
                     Message('in progress');
                 end;
             }
+            action(FindEntries)
+            {
+                Caption = 'Find Entries';
+                Tooltip = 'Find all entries and documents that exist for the document number and posting date on the selected entry or document.';
+                image = Navigate;
+                ShortcutKey = 'Shift+ctrl+I';
+                trigger OnAction()
+                var
+                    Navigate: Page Navigate;
+                begin
+                    Navigate.SetDoc(Rec.PostingDate, Rec.DocumentNo);
+                    Navigate.Run();
+                end;
+            }
+
         }
         area(Promoted)
         {
@@ -102,6 +137,7 @@ page 50012 "Posted Conference Card ASD"
             {
                 Caption = 'Process';
                 actionref(Post_Promoted; Post) { }
+                actionref(FEntries; Findentries) { }
             }
         }
     }

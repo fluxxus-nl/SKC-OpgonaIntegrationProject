@@ -2,7 +2,7 @@ page 50015 "Conference Register List ASD"
 {
 
     ApplicationArea = Jobs;
-    Caption = 'Resource Registers';
+    Caption = 'Conference Register';
     Editable = false;
     PageType = List;
     SourceTable = "Resource Register";

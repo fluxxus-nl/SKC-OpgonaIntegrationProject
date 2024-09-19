@@ -5,7 +5,11 @@ codeunit 50001 "Conference Jnl.-Post Line ASD"
     var
         ConferenceJournalASD: Record "Conference Journal ASD";
         ConferenceLineASD: Record "Conference Line ASD";
+        ConferenceRegister: Record "Conference Register ASD";
+
         ConferenceJnlCheckLineASD: Codeunit "Conference Jnl.-Check Line ASD";
+        NextEntryNo: Integer;
+
 
     trigger OnRun()
     begin
@@ -49,6 +53,43 @@ codeunit 50001 "Conference Jnl.-Post Line ASD"
     local procedure PostJournalToLedger(ConferenceJournalASD: Record "Conference Journal ASD")
     var
         ConferenceLedgerEntryASD: Record "Conference Ledger Entry ASD";
+        ConferenceASD: Record "Conference ASD";
+
     begin
+        if NextEntryNo = 0 then begin
+            ConferenceLedgerEntryASD.LockTable();
+            NextEntryNo := ConferenceLedgerEntryASD.GetLastEntryNo() + 1;
+        end;
+
+        if ConferenceRegister."No." = 0 then begin
+            ConferenceRegister.LockTable();
+            if (not ConferenceRegister.FindLast()) or (ConferenceRegister."To Entry No." <> 0) then begin
+                ConferenceRegister.Init();
+                ConferenceRegister."No." := ConferenceRegister."No." + 1;
+                ConferenceRegister."From Entry No." := NextEntryNo;
+                ConferenceRegister."To Entry No." := NextEntryNo;
+                ConferenceRegister."Creation Date" := Today();
+                ConferenceRegister."Creation Time" := Time();
+                ConferenceRegister."Source Code" := ConferenceJournalASD."Source Code";
+                ConferenceRegister."Journal Batch Name" := ConferenceJournalASD."Journal Batch Name";
+                ConferenceRegister."User ID" := UserId();
+                ConferenceRegister.Insert();
+            end;
+        end;
+        ConferenceRegister."To Entry No." := NextEntryNo;
+        ConferenceRegister.Modify();
+
+        ConferenceASD.Get(ConferenceJournalASD."Document No.");
+        //ConferenceASD.TestField(Blocked, false);
+
+        ConferenceLedgerEntryASD.Init();
+        ConferenceLedgerEntryASD.CopyFromConferenceJnlLine(ConferenceJournalASD);
+
+        ConferenceLedgerEntryASD."Total Price" := Round(ConferenceLedgerEntryASD."Total Price");
+        ConferenceLedgerEntryASD.Description := '';
+        ConferenceLedgerEntryASD."User ID" := UserId();
+        ConferenceLedgerEntryASD."Entry No." := NextEntryNo;
+        ConferenceLedgerEntryASD.Insert();
+        NextEntryNo := NextEntryNo + 1;
     end;
 }

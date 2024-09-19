@@ -98,6 +98,10 @@ table 50010 "Conference Ledger Entry ASD"
             Caption = 'No. Series';
             TableRelation = "No. Series";
         }
+        field(30; Quantity; decimal)
+        {
+            Caption = 'Quantity';
+        }
     }
 
     keys
@@ -107,4 +111,34 @@ table 50010 "Conference Ledger Entry ASD"
             Clustered = true;
         }
     }
+
+    procedure GetLastEntryNo(): Integer;
+    var
+        FindRecordManagement: Codeunit "Find Record Management";
+    begin
+        exit(FindRecordManagement.GetLastEntryIntFieldValue(Rec, FieldNo("Entry No.")))
+    end;
+
+    procedure CopyFromConferenceJnlLine(ConferenceJournalASD: Record "Conference Journal ASD");
+    begin
+        Rec."Entry Type" := ConferenceJournalASD."Entry Type";
+        Rec."Document No." := ConferenceJournalASD."Document No.";
+        Rec."Posting Date" := ConferenceJournalASD."Posting Date";
+        Rec."Document Date" := ConferenceJournalASD."Document Date";
+        Rec."Document No." := ConferenceJournalASD."Document No.";
+        Rec.Description := ConferenceJournalASD.Description;
+        Rec.Quantity := ConferenceJournalASD.Quantity;
+        Rec."Unit Price" := ConferenceJournalASD."Unit Price";
+        Rec."Total Price" := ConferenceJournalASD."Total Price";
+        //Rec."Starting Date" := ConferenceJournalASD."Starting Date";
+        //Rec."Resource Ledger Entry No." := SeminarJnlLine."Resource Ledger Entry No.";
+        Rec."Source Code" := ConferenceJournalASD."Source Code";
+        Rec."Journal Batch Name" := ConferenceJournalASD."Journal Batch Name";
+        Rec."Reason Code" := ConferenceJournalASD."Reason Code";
+        // ASD8.03<
+        //Rec."Global Dimension 1 Code" := SeminarJnlLine."Shortcut Dimension 1 Code";
+        //Rec."Global Dimension 2 Code" := SeminarJnlLine."Shortcut Dimension 2 Code";
+        //Rec."Dimension Set ID" := SeminarJnlLine."Dimension Set ID";
+        // ASD8.03>
+    end;
 }

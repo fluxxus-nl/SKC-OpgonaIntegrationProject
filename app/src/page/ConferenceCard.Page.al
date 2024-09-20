@@ -34,6 +34,10 @@ page 50003 "Conference Card ASD"
                     Editable = true;
                     LookupPageId = "Conference Location List ASD";
                     ShowMandatory = true;
+                    trigger OnValidate()
+                    begin
+                        blockconferenceline();
+                    end;
                 }
                 field(DocumentDate; Rec.DocumentDate)
                 {
@@ -69,6 +73,7 @@ page 50003 "Conference Card ASD"
             {
                 ApplicationArea = All;
                 SubPageLink = "Document No." = field(DocumentNo);
+                Editable = blockLines;
             }
             group(Booking)
             {
@@ -153,4 +158,14 @@ page 50003 "Conference Card ASD"
             Rec."Source Code" := SourceCodeSetup."Conference Location ASD";
         end;
     end;
+
+    procedure blockconferenceline()
+    begin
+        blockLines := false;
+        if Rec.ConferenceLocation <> '' then
+            blockLines := true;
+    end;
+
+    var
+        blockLines: Boolean;
 }

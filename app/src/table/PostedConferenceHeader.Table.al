@@ -115,6 +115,10 @@ table 50008 "Posted Conference Header ASD"
             Editable = false;
             TableRelation = "Source Code";
         }
+        field(20; Blocked; Boolean)
+        {
+            Caption = 'Blocked';
+        }
     }
 
     keys

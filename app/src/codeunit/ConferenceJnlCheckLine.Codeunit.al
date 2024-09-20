@@ -55,9 +55,4 @@ codeunit 50000 "Conference Jnl.-Check Line ASD"
         if LocalQty = 0 then
             Error(QuantityNotEqualZeroErr);
     end;
-
-    local procedure GetResource()
-    begin
-
-    end;
 }

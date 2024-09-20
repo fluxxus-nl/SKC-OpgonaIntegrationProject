@@ -122,6 +122,10 @@ table 50002 "Conference ASD"
                 "Total Price" := "Unit Price" * Duration / 3600000;
             end;
         }
+        field(20; Blocked; Boolean)
+        {
+            Caption = 'Blocked';
+        }
     }
 
     keys

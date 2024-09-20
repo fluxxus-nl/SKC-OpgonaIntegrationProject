@@ -60,6 +60,10 @@ page 50003 "Conference Card ASD"
                     Editable = true;
                     ToolTip = 'Specifies the value of the Total Price field.', Comment = '%';
                 }
+                field(Blocked; Rec.Blocked)
+                {
+                    ToolTip = 'Specifies the value of the Blocked field.', Comment = '%';
+                }
             }
 
             part(ConferenceRegistrationLines; "Conference Lines ASD")

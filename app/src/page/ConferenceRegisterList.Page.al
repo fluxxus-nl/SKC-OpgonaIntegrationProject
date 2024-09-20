@@ -2,10 +2,10 @@ page 50015 "Conference Register List ASD"
 {
 
     ApplicationArea = Jobs;
-    Caption = 'Resource Registers';
+    Caption = 'Conference Register';
     Editable = false;
     PageType = List;
-    SourceTable = "Resource Register";
+    SourceTable = "Conference Register ASD";
     UsageCategory = History;
 
     layout
@@ -87,25 +87,14 @@ page 50015 "Conference Register List ASD"
             {
                 Caption = '&Register';
                 Image = Register;
-                action("Resource Ledger")
+                action("Conference Ledger")
                 {
                     ApplicationArea = Jobs;
-                    Caption = 'Resource Ledger';
-                    Image = ResourceLedger;
-                    RunObject = Codeunit "Res. Reg.-Show Ledger";
-                    ToolTip = 'View the ledger entries for the resource.';
+                    Caption = 'Conference Ledger';
+                    Image = Ledger;
+                    RunObject = Codeunit "Conf. Reg.-Show Ledger ASD";
+                    ToolTip = 'View the ledger entries for the Conference.';
                 }
-            }
-        }
-        area(processing)
-        {
-            action("Delete Empty Resource Registers")
-            {
-                ApplicationArea = All;
-                Caption = 'Delete Empty Resource Registers';
-                Image = Delete;
-                RunObject = Report "Delete Empty Res. Registers";
-                ToolTip = 'Find and delete empty resource registers.';
             }
         }
         area(Promoted)
@@ -114,7 +103,7 @@ page 50015 "Conference Register List ASD"
             {
                 Caption = 'Process';
 
-                actionref("Resource Ledger_Promoted"; "Resource Ledger")
+                actionref("Conference Ledger_Promoted"; "Conference Ledger")
                 {
                 }
             }

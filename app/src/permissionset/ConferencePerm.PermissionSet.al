@@ -40,5 +40,8 @@ permissionset 50000 "ConferencePerm ASD"
         page "My Conference List ASD" = X,
         page "Posted Conference Card ASD" = X,
         page "Posted Conference Lines ASD" = X,
-        page "Posted Conference List ASD" = X;
+        page "Posted Conference List ASD" = X,
+        codeunit "Conf. Reg.-Show Ledger ASD" = X,
+        page "Conference Ledger Entries ASD" = X,
+        page "Conference Statistics ASD" = X;
 }

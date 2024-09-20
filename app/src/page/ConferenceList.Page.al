@@ -95,7 +95,7 @@ page 50004 "Conference List ASD"
                 ToolTip = 'View Statistical Information';
                 image = Statistics;
                 RunObject = Page "Conference Statistics ASD";
-                RunPageLink = DocumentNo = field(DocumentNo), DocumentDate = field(DocumentDate);
+                RunPageLink = "No." = field(DocumentNo), "Document Date" = field(DocumentDate);
                 ShortcutKey = 'f7';
             }
         }

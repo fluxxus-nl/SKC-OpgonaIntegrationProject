@@ -104,6 +104,30 @@ table 50005 "Conference Location ASD"
             if ("Country/Region Code" = filter(<> '')) "Post Code" where("Country/Region Code" = field("Country/Region Code"));
             ValidateTableRelation = false;
         }
+        field(20; "Number of Locations"; Integer)
+        {
+            Caption = 'NumberLocations';
+            FieldClass = FlowField;
+            Editable = false;
+            CalcFormula = count("Posted Conference Header ASD" where(ConferenceLocation = field("No.")));
+        }
+        field(21; "Number of Participants"; Integer)
+        {
+            Caption = 'Number of Participants';
+            FieldClass = FlowField;
+            Editable = false;
+            CalcFormula = Sum("Posted Conference Header ASD".NoAttendees);
+        }
+        field(22; "Total Amount"; Decimal)
+        {
+            Caption = 'Total Amount';
+            FieldClass = FlowField;
+            CalcFormula = Sum("Posted Conference Header ASD"."Total Price" where(DocumentNo = field("No.")));
+        }
+        field(23; "Document Date"; Date)
+        {
+            Caption = 'Document Date';
+        }
     }
     keys
     {

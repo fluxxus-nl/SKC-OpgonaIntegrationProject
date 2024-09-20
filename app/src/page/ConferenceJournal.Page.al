@@ -2,7 +2,7 @@ page 50008 "Conference Journal ASD"
 {
     Caption = 'Conference Journal';
     PageType = Worksheet;
-    UsageCategory = Tasks;
+    ApplicationArea = All;
     SourceTable = "Conference Journal ASD";
     SaveValues = true;
 

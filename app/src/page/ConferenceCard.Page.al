@@ -17,13 +17,16 @@ page 50003 "Conference Card ASD"
                 field(DocumentNo; Rec.DocumentNo)
                 {
                     ApplicationArea = All;
-                    Editable = false;
                 }
                 field(Customer; Rec.Customer)
                 {
                     ApplicationArea = All;
                     Editable = true;
                     ShowMandatory = true;
+                }
+                field(CustomerName; Rec.CustomerName)
+                {
+                    ToolTip = 'Specifies the value of the Customer Name field.', Comment = '%';
                 }
                 field(ConferenceLocation; Rec.ConferenceLocation)
                 {
@@ -59,10 +62,6 @@ page 50003 "Conference Card ASD"
                 {
                     Editable = true;
                     ToolTip = 'Specifies the value of the Total Price field.', Comment = '%';
-                }
-                field(Blocked; Rec.Blocked)
-                {
-                    ToolTip = 'Specifies the value of the Blocked field.', Comment = '%';
                 }
             }
 
@@ -102,6 +101,13 @@ page 50003 "Conference Card ASD"
                 {
                     ApplicationArea = All;
                     Editable = true;
+                }
+            }
+            group("Invoice Details")
+            {
+                field("VAT Bus. Posting Group"; Rec."VAT Bus. Posting Group")
+                {
+                    ToolTip = 'Specifies the value of the VAT Bus. Posting Group field.', Comment = '%';
                 }
             }
         }

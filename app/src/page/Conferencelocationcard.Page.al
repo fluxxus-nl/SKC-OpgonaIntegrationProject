@@ -28,6 +28,10 @@ page 50002 "Conference Location Card ASD"
                 {
                     ToolTip = 'Specifies the value of the Address 2 field.', Comment = '%';
                 }
+                field("Post Code"; Rec."Post Code")
+                {
+                    ToolTip = 'Specifies the value of the Post Code field.', Comment = '%';
+                }
                 field(City; Rec.City)
                 {
                     ToolTip = 'Specifies the value of the City field.', Comment = '%';
@@ -36,10 +40,11 @@ page 50002 "Conference Location Card ASD"
                 {
                     ToolTip = 'Specifies the value of the Country/Region Code field.', Comment = '%';
                 }
-                field(Status; Rec.Status)
+                field(Blocked; Rec.Blocked)
                 {
-                    ToolTip = 'Specifies the value of the Status field.', Comment = '%';
+                    ToolTip = 'Specifies the value of the Blocked field.', Comment = '%';
                 }
+
             }
             group("Invoicing Details")
             {

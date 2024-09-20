@@ -7,7 +7,7 @@ table 50002 "Conference ASD"
     {
         field(1; DocumentNo; Code[20])
         {
-            Caption = 'Document No.';
+            Caption = 'No.';
             Tooltip = 'Specifies the value of the Document No. field';
         }
         field(2; Customer; Code[20])
@@ -15,6 +15,17 @@ table 50002 "Conference ASD"
             Caption = 'Customer No.';
             Tooltip = 'Specifies the value of the Customer field';
             TableRelation = Customer."No.";
+            trigger OnValidate()
+            var
+                CustomernameASD: record Customer;
+            begin
+                if Customer <> '' then begin
+                    CustomernameASD.Get(Customer);
+                    CustomerName := CustomernameASD.Name;
+                    "VAT Bus. Posting Group" := CustomernameASD."VAT Bus. Posting Group";
+                    "Gen. Bus. Posting Group" := CustomernameASD."Gen. Bus. Posting Group"
+                end
+            end;
         }
         field(3; ConferenceLocation; Code[20])
         {
@@ -34,7 +45,7 @@ table 50002 "Conference ASD"
         }
         field(4; StartingDate; Date)
         {
-            Caption = 'Starting Date';
+            Caption = 'Conference Date';
             Tooltip = 'Specifies the value of the Starting Date field';
         }
         field(5; EndingDate; Date)
@@ -44,7 +55,7 @@ table 50002 "Conference ASD"
         }
         field(6; StartingTime; Time)
         {
-            Caption = 'Conference Date';
+            Caption = 'Starting Time';
             Tooltip = 'Specifies the value of the Starting Time field';
         }
         field(7; EndingTime; Time)
@@ -125,6 +136,20 @@ table 50002 "Conference ASD"
         field(20; Blocked; Boolean)
         {
             Caption = 'Blocked';
+        }
+        field(21; "Gen. Bus. Posting Group"; Code[20])
+        {
+            Caption = 'Gen. Bus. Posting Group';
+            TableRelation = "Gen. Business Posting Group";
+        }
+        field(22; "VAT Bus. Posting Group"; Code[20])
+        {
+            Caption = 'VAT Bus. Posting Group';
+            TableRelation = "VAT Business Posting Group";
+        }
+        field(23; CustomerName; Code[50])
+        {
+            Caption = 'Customer Name';
         }
     }
 

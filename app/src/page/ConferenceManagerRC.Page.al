@@ -46,17 +46,9 @@ page 50019 "Conference Manager RC ASD"
             action(ConferenceRegistration)
             {
                 ApplicationArea = Basic;
-                Caption = 'Conference Registration';
+                Caption = 'Conference';
                 Image = NewTimesheet;
                 RunObject = Page "Conference Card ASD";
-                RunPageMode = Create;
-            }
-            action(SalesInvoice)
-            {
-                ApplicationArea = Basic;
-                Caption = 'Sales Invoice';
-                Image = NewInvoice;
-                RunObject = Page "Sales Invoice";
                 RunPageMode = Create;
             }
         }
@@ -68,24 +60,47 @@ page 50019 "Conference Manager RC ASD"
                 Caption = 'Conference';
                 RunObject = Page "Conference List ASD";
             }
+            action(PostedConferenceRegistrations1)
+            {
+                ApplicationArea = Basic;
+                Caption = 'Posted Conference';
+                RunObject = Page "Posted Conference List ASD";
+            }
             action(Locations)
             {
                 ApplicationArea = Basic;
                 Caption = 'Conference Locations';
                 RunObject = Page "Conference Location List ASD";
             }
-            action(Instructors)
+            action(ConferenceLedger)
             {
                 ApplicationArea = Basic;
-                Caption = 'Equipment';
-                RunObject = Page "Resource List";
-                RunPageView = where(Type = const(Equipment));
+                Caption = 'Conference Ledger Entries';
+                RunObject = Page "Conference Ledger Entries ASD";
+            }
+            action(ConferenceSetup)
+            {
+                ApplicationArea = Basic;
+                Caption = 'Conference Setup';
+                RunObject = Page "Conference Setup ASD";
             }
             action(Customers)
             {
                 ApplicationArea = Basic;
                 Caption = 'Customers';
                 RunObject = Page "Customer List";
+            }
+            action(Item)
+            {
+                ApplicationArea = Basic;
+                Caption = 'Item';
+                RunObject = Page "Item List";
+            }
+            action(Resources)
+            {
+                ApplicationArea = Basic;
+                Caption = 'Resource';
+                RunObject = Page "Resource List";
             }
         }
         area(Sections)

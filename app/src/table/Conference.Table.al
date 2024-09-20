@@ -152,7 +152,15 @@ table 50002 "Conference ASD"
             if ConferenceSetupASD.Get() then begin
                 ConferenceSetupASD.TestField(ConferenceRegNos);
                 NoSeriesManagement.InitSeries(ConferenceSetupASD.ConferenceRegNos, Rec.DocumentNoSeries, 0D, DocumentNo, DocumentNoSeries);
+                InitRecord();
             end;
+    end;
+
+    procedure InitRecord();
+    begin
+        if Rec."PostingDate" = 0D then
+            Rec."PostingDate" := WorkDate();
+        Rec."DocumentDate" := WorkDate();
     end;
 
     procedure ValidateTimeOrder()

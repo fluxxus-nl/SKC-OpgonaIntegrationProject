@@ -81,7 +81,7 @@ page 50002 "Conference Location Card ASD"
         {
             action(CreateConferenceDocument)
             {
-                Caption = 'Create Conference Document (TEST)';
+                Caption = 'Create Conference Document';
                 ToolTip = 'Specifies the Create Conference Document action';
                 ApplicationArea = All;
                 Scope = Repeater;

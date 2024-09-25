@@ -7,12 +7,12 @@ table 50008 "Posted Conference Header ASD"
     {
         field(1; DocumentNo; Code[20])
         {
-            Caption = 'Document No.';
+            Caption = 'No.';
             Tooltip = 'Specifies the value of the Document No. field';
         }
         field(2; Customer; Code[20])
         {
-            Caption = 'Customer';
+            Caption = 'Customer No.';
             Tooltip = 'Specifies the value of the Customer field';
             TableRelation = Customer."No.";
         }
@@ -24,7 +24,7 @@ table 50008 "Posted Conference Header ASD"
         }
         field(4; StartingDate; Date)
         {
-            Caption = 'Starting Date';
+            Caption = 'Conference Date';
             Tooltip = 'Specifies the value of the Starting Date field';
         }
         field(5; EndingDate; Date)
@@ -118,6 +118,20 @@ table 50008 "Posted Conference Header ASD"
         field(20; Blocked; Boolean)
         {
             Caption = 'Blocked';
+        }
+        field(21; "Gen. Bus. Posting Group"; Code[20])
+        {
+            Caption = 'Gen. Bus. Posting Group';
+            TableRelation = "Gen. Business Posting Group";
+        }
+        field(22; "VAT Bus. Posting Group"; Code[20])
+        {
+            Caption = 'VAT Bus. Posting Group';
+            TableRelation = "VAT Business Posting Group";
+        }
+        field(23; CustomerName; Code[50])
+        {
+            Caption = 'Customer Name';
         }
     }
 

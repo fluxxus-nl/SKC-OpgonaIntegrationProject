@@ -14,7 +14,7 @@ page 50001 "Conference Setup ASD"
         {
             group(NoSeries)
             {
-                Caption = 'Number Series';
+                Caption = 'Numbering';
                 field(ConferenceRegNos; Rec.ConferenceRegNos)
                 {
                     ApplicationArea = All;

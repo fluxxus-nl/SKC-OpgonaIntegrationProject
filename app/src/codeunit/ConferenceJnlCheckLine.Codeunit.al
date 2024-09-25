@@ -1,6 +1,7 @@
 codeunit 50000 "Conference Jnl.-Check Line ASD"
 {
-    internal procedure DoCheck(ConferenceASD: Record "Conference ASD"; ConferenceLineASD: Record "Conference Line ASD")
+    TableNo = "Conference ASD";
+    internal procedure DoCheckConferenceDoc(ConferenceASD: Record "Conference ASD"; ConferenceLineASD: Record "Conference Line ASD")
     begin
         ConferenceASD.TestField(Customer);
         ConferenceASD.TestField(ConferenceLocation);
@@ -27,6 +28,14 @@ codeunit 50000 "Conference Jnl.-Check Line ASD"
         CheckPostingDate(ConferenceASD.PostingDate);
         CheckDocumentDate(ConferenceASD.DocumentDate);
         CheckQty(ConferenceLineASD.Quantity);
+    end;
+
+    internal procedure DoCheckConferenceLocation(ConferenceLocationASD: Record "Conference Location ASD")
+    begin
+        ConferenceLocationASD.TestField("No.");
+        ConferenceLocationASD.TestField("Base Unit of Measure");
+        ConferenceLocationASD.TestField("Unit Price");
+        ConferenceLocationASD.TestField("Gen. Prod. Posting Group");
     end;
 
     local procedure CheckPostingDate(LocalPostingDate: Date)

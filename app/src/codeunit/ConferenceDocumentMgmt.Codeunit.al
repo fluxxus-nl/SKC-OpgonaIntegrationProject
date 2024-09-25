@@ -23,4 +23,12 @@ codeunit 50002 "Conference Document Mgmt ASD"
             until ConferenceLineASD.Next() = 0;
         ConferenceASD.Delete(true);
     end;
+
+    internal procedure CopyConferenceDocument()
+    var
+        PostedConferenceHeaderASD: Record "Posted Conference Header ASD";
+        PostedConferenceLineASD: Record "Posted Conference Line ASD";
+    begin
+
+    end;
 }

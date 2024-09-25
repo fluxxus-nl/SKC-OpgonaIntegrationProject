@@ -142,9 +142,10 @@ page 50003 "Conference Card ASD"
     var
         SourceCodeSetup: Record "Source Code Setup";
     begin
-        if Rec."Source Code" <> '' then begin
+        if Rec."Source Code" = '' then begin
             SourceCodeSetup.Get();
             Rec."Source Code" := SourceCodeSetup."Conference Location ASD";
+            Rec.Modify();
         end;
     end;
 }

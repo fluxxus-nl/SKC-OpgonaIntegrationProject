@@ -12,8 +12,6 @@ page 50016 "Conference Activities ASD"
         {
             cuegroup(Registrations)
             {
-                CuegroupLayout = Wide;
-
                 field(Active; Rec.Active)
                 {
                     ApplicationArea = All;

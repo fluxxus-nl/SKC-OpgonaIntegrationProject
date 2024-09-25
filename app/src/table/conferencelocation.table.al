@@ -26,6 +26,10 @@ table 50005 "Conference Location ASD"
         field(7; City; Text[30])
         {
             Caption = 'City';
+            TableRelation = if ("Country/Region Code" = const('')) "Post Code".City
+            else
+            if ("Country/Region Code" = filter(<> '')) "Post Code".City where("Country/Region Code" = field("Country/Region Code"));
+            ValidateTableRelation = false;
         }
         field(8; "Base Unit of Measure"; Code[10])
         {
@@ -87,6 +91,42 @@ table 50005 "Conference Location ASD"
             Caption = 'Global Dimension 2 Filter';
             FieldClass = FlowFilter;
             TableRelation = "Dimension Value".Code where("Global Dimension No." = const(2));
+        }
+        field(18; Blocked; Boolean)
+        {
+            Caption = 'Blocked';
+        }
+        field(19; "Post Code"; Code[20])
+        {
+            Caption = 'Post Code';
+            TableRelation = if ("Country/Region Code" = const('')) "Post Code"
+            else
+            if ("Country/Region Code" = filter(<> '')) "Post Code" where("Country/Region Code" = field("Country/Region Code"));
+            ValidateTableRelation = false;
+        }
+        field(20; "Number of Locations"; Integer)
+        {
+            Caption = 'NumberLocations';
+            FieldClass = FlowField;
+            Editable = false;
+            CalcFormula = count("Posted Conference Header ASD" where(ConferenceLocation = field("No.")));
+        }
+        field(21; "Number of Participants"; Integer)
+        {
+            Caption = 'Number of Participants';
+            FieldClass = FlowField;
+            Editable = false;
+            CalcFormula = Sum("Posted Conference Header ASD".NoAttendees);
+        }
+        field(22; "Total Amount"; Decimal)
+        {
+            Caption = 'Total Amount';
+            FieldClass = FlowField;
+            CalcFormula = Sum("Posted Conference Header ASD"."Total Price" where(DocumentNo = field("No.")));
+        }
+        field(23; "Document Date"; Date)
+        {
+            Caption = 'Document Date';
         }
     }
     keys

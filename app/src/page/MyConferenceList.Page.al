@@ -1,6 +1,6 @@
 page 50017 "My Conference List ASD"
 {
-    Caption = 'My Conferences ASD';
+    Caption = 'My Conferences';
     PageType = ListPart;
     ApplicationArea = All;
     UsageCategory = Administration;

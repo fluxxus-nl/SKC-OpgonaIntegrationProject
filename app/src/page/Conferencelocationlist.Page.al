@@ -40,7 +40,7 @@ page 50000 "Conference Location List ASD"
                 ToolTip = 'Specifies the Create Conference Document action';
                 ApplicationArea = All;
                 Scope = Repeater;
-                Image = Create;
+                Image = CreateDocument;
 
                 trigger OnAction();
                 var
@@ -55,6 +55,15 @@ page 50000 "Conference Location List ASD"
                         PAGE.Run(Page::"Conference Card ASD", ConferenceASD);
                     end;
                 end;
+            }
+        }
+        area(Promoted)
+        {
+            group(Category_Process)
+            {
+                Caption = 'Category_Process';
+                actionref(Create_Promoted; CreateConferenceDocument) { }
+
             }
         }
     }

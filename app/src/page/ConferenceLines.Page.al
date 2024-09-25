@@ -60,14 +60,9 @@ page 50007 "Conference Lines ASD"
                 {
                     ToolTip = 'Specifies the value of the Discount Amount field.', Comment = '%';
                 }
-
                 field(Amount; Rec.Amount)
                 {
                     ToolTip = 'Specifies the value of the Amount field.', Comment = '%';
-                }
-                field("Gen. Bus. Posting Group"; Rec."Gen. Bus. Posting Group")
-                {
-                    ToolTip = 'Specifies the value of the Gen. Bus. Posting Group field.', Comment = '%';
                 }
                 field("Gen. Prod. Posting Group"; Rec."Gen. Prod. Posting Group")
                 {

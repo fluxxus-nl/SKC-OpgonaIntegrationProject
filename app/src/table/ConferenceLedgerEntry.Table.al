@@ -101,11 +101,16 @@ table 50010 "Conference Ledger Entry ASD"
         {
             Caption = 'Quantity';
         }
+        field(31; "VAT. Bus. Posting Group"; Code[20])
+        {
+            Caption = 'VAT Bus. Posting Group';
+            TableRelation = "VAT Business Posting Group";
+        }
     }
 
     keys
     {
-        key(PK1; "Entry No.", "Document No.")
+        key(PK1; "Entry No.", "Document No.", Description, "Posting Date")
         {
             Clustered = true;
         }

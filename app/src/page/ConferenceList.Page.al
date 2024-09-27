@@ -77,7 +77,7 @@ page 50004 "Conference List ASD"
     {
         area(Processing)
         {
-            /*action(Statistics)
+            action(Statistics)
             {
                 Caption = 'Statistics';
                 ToolTip = 'View Statistical Information';
@@ -85,14 +85,14 @@ page 50004 "Conference List ASD"
                 RunObject = Page "Conference Statistics ASD";
                 RunPageLink = DocumentNo = field(DocumentNo), DocumentDate = field(DocumentDate);
                 ShortcutKey = 'f7';
-            }*/
+            }
         }
         area(Promoted)
         {
             group(Category_Process)
             {
                 Caption = 'Process';
-                //actionref(Statistics_Promoted; Statistics) { }
+                actionref(Statistics_Promoted; Statistics) { }
             }
         }
     }

@@ -71,10 +71,10 @@ page 50020 "Conference Ledger Entries ASD"
                 {
                     ToolTip = 'Specifies the value of the Gen. Bus. Posting Group field.';
                 }
-                /*field("VAT. Bus. Posting Group"; Rec."VAT. Bus. Posting Group")
+                field("VAT. Bus. Posting Group"; Rec."VAT. Bus. Posting Group")
                 {
                     ToolTip = 'Specifies the value of the VAT. Bus. Posting Group field.';
-                }*/
+                }
             }
         }
 

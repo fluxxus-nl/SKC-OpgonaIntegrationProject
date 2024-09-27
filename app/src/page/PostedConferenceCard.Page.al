@@ -54,10 +54,11 @@ page 50012 "Posted Conference Card ASD"
                 {
                     ToolTip = 'Specifies the value of the Total Price field.', Comment = '%';
                 }
-                field(Blocked; Rec.Blocked)
-                {
-                    ToolTip = 'Specifies the value of the Blocked field.', Comment = '%';
-                }
+            }
+            part(ConferenceRegistrationLines; "Conference Lines ASD")
+            {
+                ApplicationArea = All;
+                SubPageLink = "Document No." = field(DocumentNo);
             }
             group(Booking)
             {
@@ -93,10 +94,12 @@ page 50012 "Posted Conference Card ASD"
                 }
 
             }
-            part(ConferenceRegistrationLines; "Conference Lines ASD")
+            group("Invoice Details")
             {
-                ApplicationArea = All;
-                SubPageLink = "Document No." = field(DocumentNo);
+                field("VAT Bus. Posting Group"; Rec."VAT Bus. Posting Group")
+                {
+                    ToolTip = 'Specifies the value of the VAT Bus. Posting Group field.', Comment = '%';
+                }
             }
         }
     }

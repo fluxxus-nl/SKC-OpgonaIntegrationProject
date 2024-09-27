@@ -107,7 +107,6 @@ page 50020 "Conference Ledger Entries ASD"
                 trigger OnAction()
                 begin
                     Navigate.SetDoc(Rec."Posting Date", Rec."Document No.");
-                    Navigate.SetRec(Rec);
                     Navigate.Run();
                 end;
             }

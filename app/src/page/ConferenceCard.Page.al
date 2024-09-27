@@ -17,7 +17,12 @@ page 50003 "Conference Card ASD"
                 field(DocumentNo; Rec.DocumentNo)
                 {
                     ApplicationArea = All;
-                    Editable = false;
+
+                    trigger OnAssistEdit()
+                    begin
+                        if Rec.AssistEdit() then
+                            CurrPage.Update();
+                    end;
                 }
                 field(Customer; Rec.Customer)
                 {
@@ -25,12 +30,20 @@ page 50003 "Conference Card ASD"
                     Editable = true;
                     ShowMandatory = true;
                 }
+                field(CustomerName; Rec.CustomerName)
+                {
+                    ToolTip = 'Specifies the value of the Customer Name field.', Comment = '%';
+                }
                 field(ConferenceLocation; Rec.ConferenceLocation)
                 {
                     ApplicationArea = All;
                     Editable = true;
                     LookupPageId = "Conference Location List ASD";
                     ShowMandatory = true;
+                    trigger OnValidate()
+                    begin
+                        blockconferenceline();
+                    end;
                 }
                 field(DocumentDate; Rec.DocumentDate)
                 {
@@ -60,16 +73,14 @@ page 50003 "Conference Card ASD"
                     Editable = true;
                     ToolTip = 'Specifies the value of the Total Price field.', Comment = '%';
                 }
-                field(Blocked; Rec.Blocked)
-                {
-                    ToolTip = 'Specifies the value of the Blocked field.', Comment = '%';
-                }
             }
 
             part(ConferenceRegistrationLines; "Conference Lines ASD")
             {
                 ApplicationArea = All;
                 SubPageLink = "Document No." = field(DocumentNo);
+                Editable = blockLines;
+                UpdatePropagation = Both;
             }
             group(Booking)
             {
@@ -102,6 +113,13 @@ page 50003 "Conference Card ASD"
                 {
                     ApplicationArea = All;
                     Editable = true;
+                }
+            }
+            group("Invoice Details")
+            {
+                field("VAT Bus. Posting Group"; Rec."VAT Bus. Posting Group")
+                {
+                    ToolTip = 'Specifies the value of the VAT Bus. Posting Group field.', Comment = '%';
                 }
             }
         }
@@ -142,9 +160,21 @@ page 50003 "Conference Card ASD"
     var
         SourceCodeSetup: Record "Source Code Setup";
     begin
-        if Rec."Source Code" <> '' then begin
+        blockconferenceline();
+        if Rec."Source Code" = '' then begin
             SourceCodeSetup.Get();
             Rec."Source Code" := SourceCodeSetup."Conference Location ASD";
+            Rec.Modify();
         end;
     end;
+
+    procedure blockconferenceline()
+    begin
+        blockLines := false;
+        if Rec.ConferenceLocation <> '' then
+            blockLines := true;
+    end;
+
+    var
+        blockLines: Boolean;
 }

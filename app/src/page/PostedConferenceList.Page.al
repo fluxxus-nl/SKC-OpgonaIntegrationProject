@@ -1,6 +1,6 @@
 page 50014 "Posted Conference List ASD"
 {
-    Caption = 'Posted Conference List';
+    Caption = 'Posted Conference';
     PageType = List;
     ApplicationArea = All;
     UsageCategory = History;
@@ -21,7 +21,21 @@ page 50014 "Posted Conference List ASD"
                     ApplicationArea = All;
                     Editable = false;
                 }
+                field(Status; Rec.Status)
+                {
+                    ApplicationArea = All;
+                    Editable = true;
+                }
                 field(Customer; Rec.Customer)
+                {
+                    ApplicationArea = All;
+                    Editable = true;
+                }
+                field(CustomerName; Rec.CustomerName)
+                {
+                    ToolTip = 'Specifies the value of the Customer Name field.', Comment = '%';
+                }
+                field(PostingDate; Rec.PostingDate)
                 {
                     ApplicationArea = All;
                     Editable = true;
@@ -41,25 +55,21 @@ page 50014 "Posted Conference List ASD"
                     ApplicationArea = All;
                     Editable = true;
                 }
-                field(EndingDate; Rec.EndingDate)
+                field(StartingTime; Rec.StartingTime)
                 {
-                    ApplicationArea = All;
-                    Editable = true;
+                    ToolTip = 'Specifies the value of the Starting Time field.', Comment = '%';
                 }
-                field(DocumentDate; Rec.DocumentDate)
+                field(EndingTime; Rec.EndingTime)
                 {
-                    ApplicationArea = All;
-                    Editable = true;
+                    ToolTip = 'Specifies the value of the Ending Time field.', Comment = '%';
                 }
-                field(PostingDate; Rec.PostingDate)
+                field("Duration"; Rec."Duration")
                 {
-                    ApplicationArea = All;
-                    Editable = true;
+                    ToolTip = 'Specifies the value of the Duration field.', Comment = '%';
                 }
-                field(Status; Rec.Status)
+                field("Total Price"; Rec."Total Price")
                 {
-                    ApplicationArea = All;
-                    Editable = true;
+                    ToolTip = 'Specifies the value of the Total Price field.', Comment = '%';
                 }
             }
         }

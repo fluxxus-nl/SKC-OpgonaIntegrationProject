@@ -1,8 +1,8 @@
 table 50010 "Conference Ledger Entry ASD"
 {
     Caption = 'Conference Ledger Entry';
-    DrillDownPageID = "Resource Ledger Entries";
-    LookupPageID = "Resource Ledger Entries";
+    DrillDownPageID = "Conference Ledger Entries ASD";
+    LookupPageID = "Conference Ledger Entries ASD";
     DataClassification = CustomerContent;
 
     fields
@@ -25,8 +25,7 @@ table 50010 "Conference Ledger Entry ASD"
         }
         field(5; "Resource No."; Code[20])
         {
-            Caption = 'Resource No.';
-            TableRelation = Resource;
+            Caption = 'No.';
         }
         field(7; Description; Text[100])
         {
@@ -125,7 +124,7 @@ table 50010 "Conference Ledger Entry ASD"
         Rec."Document No." := ConferenceJournalASD."Document No.";
         Rec."Posting Date" := ConferenceJournalASD."Posting Date";
         Rec."Document Date" := ConferenceJournalASD."Document Date";
-        //document no duplicate insert removed
+        Rec."Resource No." := ConferenceJournalASD.No;
         Rec.Description := ConferenceJournalASD.Description;
         Rec.Quantity := ConferenceJournalASD.Quantity;
         Rec."Unit Price" := ConferenceJournalASD."Unit Price";
@@ -135,10 +134,8 @@ table 50010 "Conference Ledger Entry ASD"
         Rec."Source Code" := ConferenceJournalASD."Source Code";
         Rec."Journal Batch Name" := ConferenceJournalASD."Journal Batch Name";
         Rec."Reason Code" := ConferenceJournalASD."Reason Code";
-        // ASD8.03<
         //Rec."Global Dimension 1 Code" := ConferenceJournalASD."Shortcut Dimension 1 Code";
         //Rec."Global Dimension 2 Code" := ConferenceJournalASD."Shortcut Dimension 2 Code";
         //Rec."Dimension Set ID" := ConferenceJournalASD."Dimension Set ID";
-        // ASD8.03>
     end;
 }

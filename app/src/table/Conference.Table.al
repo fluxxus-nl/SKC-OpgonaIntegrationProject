@@ -7,7 +7,7 @@ table 50002 "Conference ASD"
     {
         field(1; DocumentNo; Code[20])
         {
-            Caption = 'Document No.';
+            Caption = 'No.';
             Tooltip = 'Specifies the value of the Document No. field';
         }
         field(2; Customer; Code[20])
@@ -15,6 +15,17 @@ table 50002 "Conference ASD"
             Caption = 'Customer No.';
             Tooltip = 'Specifies the value of the Customer field';
             TableRelation = Customer."No.";
+            trigger OnValidate()
+            var
+                Customer: record Customer;
+            begin
+                if Rec.Customer <> '' then begin
+                    Customer.Get(Customer);
+                    Rec.CustomerName := Customer.Name;
+                    Rec."VAT Bus. Posting Group" := Customer."VAT Bus. Posting Group";
+                    Rec."Gen. Bus. Posting Group" := Customer."Gen. Bus. Posting Group";
+                end;
+            end;
         }
         field(3; ConferenceLocation; Code[20])
         {
@@ -34,7 +45,7 @@ table 50002 "Conference ASD"
         }
         field(4; StartingDate; Date)
         {
-            Caption = 'Starting Date';
+            Caption = 'Conference Date';
             Tooltip = 'Specifies the value of the Starting Date field';
         }
         field(5; EndingDate; Date)
@@ -44,7 +55,7 @@ table 50002 "Conference ASD"
         }
         field(6; StartingTime; Time)
         {
-            Caption = 'Conference Date';
+            Caption = 'Starting Time';
             Tooltip = 'Specifies the value of the Starting Time field';
         }
         field(7; EndingTime; Time)
@@ -126,6 +137,20 @@ table 50002 "Conference ASD"
         {
             Caption = 'Blocked';
         }
+        field(21; "Gen. Bus. Posting Group"; Code[20])
+        {
+            Caption = 'Gen. Bus. Posting Group';
+            TableRelation = "Gen. Business Posting Group";
+        }
+        field(22; "VAT Bus. Posting Group"; Code[20])
+        {
+            Caption = 'VAT Bus. Posting Group';
+            TableRelation = "VAT Business Posting Group";
+        }
+        field(23; CustomerName; Text[100])
+        {
+            Caption = 'Customer Name';
+        }
     }
 
     keys
@@ -152,7 +177,15 @@ table 50002 "Conference ASD"
             if ConferenceSetupASD.Get() then begin
                 ConferenceSetupASD.TestField(ConferenceRegNos);
                 NoSeriesManagement.InitSeries(ConferenceSetupASD.ConferenceRegNos, Rec.DocumentNoSeries, 0D, DocumentNo, DocumentNoSeries);
+                InitRecord();
             end;
+    end;
+
+    procedure InitRecord();
+    begin
+        if Rec."PostingDate" = 0D then
+            Rec."PostingDate" := WorkDate();
+        Rec."DocumentDate" := WorkDate();
     end;
 
     procedure ValidateTimeOrder()
@@ -165,4 +198,18 @@ table 50002 "Conference ASD"
     begin
         TestField(Status, Status::Closed);
     end;
+
+    procedure AssistEdit(): Boolean;
+    begin
+        ConferenceSetupASD.Get();
+        ConferenceSetupASD.TestField(ConferenceRegNos);
+        if NoSeriesManagement.SelectSeries(ConferenceSetupASD.ConferenceRegNos, xRec.DocumentNoSeries, Rec.DocumentNoSeries) then begin
+            NoSeriesManagement.SetSeries(Rec.DocumentNo);
+            exit(true);
+        end;
+    end;
+
+    var
+        ConferenceSetupASD: Record "Conference Setup ASD";
+        NoSeriesManagement: Codeunit NoSeriesManagement;
 }

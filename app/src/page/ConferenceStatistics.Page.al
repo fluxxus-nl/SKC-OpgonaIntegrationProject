@@ -15,7 +15,7 @@ page 50021 "Conference Statistics ASD"
             group(ThisPeriod)
             {
                 caption = 'This Period';
-                field(SeminarDateName1; SeminarDateName[1])
+                field(conferenceDateName1; conferenceDateName[1])
                 {
                     ApplicationArea = All;
                     ShowCaption = false;
@@ -39,7 +39,7 @@ page 50021 "Conference Statistics ASD"
             group(ThisYear)
             {
                 caption = 'This Year';
-                field(SeminarDateName2; SeminarDateName[2])
+                field(conferenceDateName2; conferenceDateName[2])
                 {
                     ApplicationArea = All;
                     ShowCaption = false;
@@ -63,7 +63,7 @@ page 50021 "Conference Statistics ASD"
             group(ThisLastYear)
             {
                 caption = 'This Last Year';
-                field(SeminarDateName3; SeminarDateName[3])
+                field(conferenceDateName3; conferenceDateName[3])
                 {
                     ApplicationArea = All;
                     ShowCaption = false;
@@ -87,7 +87,7 @@ page 50021 "Conference Statistics ASD"
             group(Todate)
             {
                 caption = 'To Date';
-                field(SeminarDateName4; SeminarDateName[4])
+                field(conferenceDateName4; conferenceDateName[4])
                 {
                     ApplicationArea = All;
                     ShowCaption = false;
@@ -131,12 +131,12 @@ page 50021 "Conference Statistics ASD"
         Rec.SetRange(DocumentDate, Rec.DocumentDate);
         if CurrentDate <> WorkDate() then begin
             CurrentDate := WorkDate();
-            DateFilterCalc.CreateAccountingPeriodFilter(SeminarDateFilter[1], SeminarDateName[1], CurrentDate, 0);
-            DateFilterCalc.CreateFiscalYearFilter(SeminarDateFilter[2], SeminarDateName[2], CurrentDate, 0);
-            DateFilterCalc.CreateFiscalYearFilter(SeminarDateFilter[3], SeminarDateName[3], CurrentDate, -1);
+            DateFilterCalc.CreateAccountingPeriodFilter(conferenceDateFilter[1], conferenceDateName[1], CurrentDate, 0);
+            DateFilterCalc.CreateFiscalYearFilter(conferenceDateFilter[2], conferenceDateName[2], CurrentDate, 0);
+            DateFilterCalc.CreateFiscalYearFilter(conferenceDateFilter[3], conferenceDateName[3], CurrentDate, -1);
         end;
         for i := 1 to 4 do begin
-            Rec.SetFilter(DocumentDate, SeminarDateFilter[i]);
+            Rec.SetFilter(DocumentDate, conferenceDateFilter[i]);
             Rec.CalcFields("Total Price", "Unit Price");
             TotalPrice[i] := Rec."Total Price";
             TotalPriceNotChargeable[i] := Rec."Unit Price";
@@ -151,6 +151,6 @@ page 50021 "Conference Statistics ASD"
         TotalPriceChargeable: array[4] of Decimal;
         TotalPriceNotChargeable: array[4] of Decimal;
         i: integer;
-        SeminarDateFilter: array[4] of text[30];
-        SeminarDateName: array[4] of text[30];
+        conferenceDateFilter: array[4] of text[30];
+        conferenceDateName: array[4] of text[30];
 }

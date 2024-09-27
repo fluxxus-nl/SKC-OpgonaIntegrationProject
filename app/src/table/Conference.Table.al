@@ -17,14 +17,14 @@ table 50002 "Conference ASD"
             TableRelation = Customer."No.";
             trigger OnValidate()
             var
-                CustomernameASD: record Customer;
+                Customer: record Customer;
             begin
-                if Customer <> '' then begin
-                    CustomernameASD.Get(Customer);
-                    CustomerName := CustomernameASD.Name;
-                    "VAT Bus. Posting Group" := CustomernameASD."VAT Bus. Posting Group";
-                    "Gen. Bus. Posting Group" := CustomernameASD."Gen. Bus. Posting Group"
-                end
+                if Rec.Customer <> '' then begin
+                    Customer.Get(Customer);
+                    Rec.CustomerName := Customer.Name;
+                    Rec."VAT Bus. Posting Group" := Customer."VAT Bus. Posting Group";
+                    Rec."Gen. Bus. Posting Group" := Customer."Gen. Bus. Posting Group";
+                end;
             end;
         }
         field(3; ConferenceLocation; Code[20])
@@ -147,7 +147,7 @@ table 50002 "Conference ASD"
             Caption = 'VAT Bus. Posting Group';
             TableRelation = "VAT Business Posting Group";
         }
-        field(23; CustomerName; Code[50])
+        field(23; CustomerName; Text[100])
         {
             Caption = 'Customer Name';
         }
@@ -198,4 +198,18 @@ table 50002 "Conference ASD"
     begin
         TestField(Status, Status::Closed);
     end;
+
+    procedure AssistEdit(): Boolean;
+    begin
+        ConferenceSetupASD.Get();
+        ConferenceSetupASD.TestField(ConferenceRegNos);
+        if NoSeriesManagement.SelectSeries(ConferenceSetupASD.ConferenceRegNos, xRec.DocumentNoSeries, Rec.DocumentNoSeries) then begin
+            NoSeriesManagement.SetSeries(Rec.DocumentNo);
+            exit(true);
+        end;
+    end;
+
+    var
+        ConferenceSetupASD: Record "Conference Setup ASD";
+        NoSeriesManagement: Codeunit NoSeriesManagement;
 }

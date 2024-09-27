@@ -17,6 +17,12 @@ page 50003 "Conference Card ASD"
                 field(DocumentNo; Rec.DocumentNo)
                 {
                     ApplicationArea = All;
+
+                    trigger OnAssistEdit()
+                    begin
+                        if Rec.AssistEdit() then
+                            CurrPage.Update();
+                    end;
                 }
                 field(Customer; Rec.Customer)
                 {
@@ -74,6 +80,7 @@ page 50003 "Conference Card ASD"
                 ApplicationArea = All;
                 SubPageLink = "Document No." = field(DocumentNo);
                 Editable = blockLines;
+                UpdatePropagation = Both;
             }
             group(Booking)
             {
@@ -153,6 +160,7 @@ page 50003 "Conference Card ASD"
     var
         SourceCodeSetup: Record "Source Code Setup";
     begin
+        blockconferenceline();
         if Rec."Source Code" = '' then begin
             SourceCodeSetup.Get();
             Rec."Source Code" := SourceCodeSetup."Conference Location ASD";

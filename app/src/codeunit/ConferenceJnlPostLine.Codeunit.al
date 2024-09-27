@@ -22,10 +22,17 @@ codeunit 50001 "Conference Jnl.-Post Line ASD"
     begin
         ConferenceLineASD.Reset();
         ConferenceLineASD.SetRange("Document No.", ConferenceASD.DocumentNo);
-        if ConferenceLineASD.FindSet() then
+        if not ConferenceLineASD.FindSet() then
+            Error('There are no Conference lines to post for Conference %1.', ConferenceASD.DocumentNo)
+        else begin
             repeat
                 Code(ConferenceASD, ConferenceLineASD);
             until ConferenceLineASD.Next() = 0;
+
+            PostConferenceLocationToJournal(ConferenceASD, ConferenceLineASD);
+            ConferenceJnlCheckLineASD.DoCheckConferenceLocation(ConferenceLocationASD);
+            PostConferenceLocationJournal(ConferenceJournalASD);
+        end;
     end;
 
     local procedure Code(ConferenceASD: Record "Conference ASD"; ConferenceLineASD: Record "Conference Line ASD")
@@ -34,18 +41,22 @@ codeunit 50001 "Conference Jnl.-Post Line ASD"
         PostConferenceDocToJournal(ConferenceASD, ConferenceLineASD);
         PostConferenceJournal(ConferenceJournalASD);
 
-        PostConferenceLocationToJournal(ConferenceASD, ConferenceLineASD);
-        ConferenceJnlCheckLineASD.DoCheckConferenceLocation(ConferenceLocationASD);
-        PostConferenceLocationJournal(ConferenceJournalASD);
 
         if ConferenceLineASD.type = ConferenceLineASD.type::Resource then begin
             PostResourceToJournal(ConferenceASD, ConferenceLineASD);
             PostResourceJournal(ResJnlLine);
         end;
+
+        /*if ConferenceLineASD.type = ConferenceLineASD.type::Item then begin
+            PostItemJournal(ConferenceJournalASD);
+            Message('Item Journal Posted');
+        end;*/
     end;
 
     local procedure PostConferenceDocToJournal(ConferenceASD: Record "Conference ASD"; ConferenceLineASD: Record "Conference Line ASD")
     begin
+        ConferenceJournalASD.Description := ConferenceLineASD.Description;
+        ConferenceJournalASD."Document Date" := ConferenceASD.DocumentDate;
         ConferenceJournalASD."Posting Date" := ConferenceASD.PostingDate;
         ConferenceJournalASD."Entry Type" := ConferenceLineASD.type;
         ConferenceJournalASD."Document No." := ConferenceASD.DocumentNo;
@@ -185,5 +196,12 @@ codeunit 50001 "Conference Jnl.-Post Line ASD"
         ResJnlPostLine: Codeunit "Res. Jnl.-Post Line";
     begin
         ResJnlPostLine.RunWithCheck(ResJnlLine);
+    end;
+
+    local procedure PostItemJournal(ItemJournalASD: Record "Item Journal Line")
+    var
+        ItemJnlPostLine: Codeunit "Item Jnl.-Post Line";
+    begin
+        ItemJnlPostLine.RunWithCheck(ItemJournalASD);
     end;
 }

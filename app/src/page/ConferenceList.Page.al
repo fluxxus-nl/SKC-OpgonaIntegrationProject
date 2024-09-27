@@ -77,35 +77,22 @@ page 50004 "Conference List ASD"
     {
         area(Processing)
         {
-            action(Post)
-            {
-                Caption = 'Post';
-                ApplicationArea = All;
-                Image = Post;
-                Scope = Repeater;
-
-                trigger OnAction()
-                begin
-                    Message('in progress');
-                end;
-            }
-            action(Statistics)
+            /*action(Statistics)
             {
                 Caption = 'Statistics';
                 ToolTip = 'View Statistical Information';
                 image = Statistics;
                 RunObject = Page "Conference Statistics ASD";
-                RunPageLink = "No." = field(DocumentNo), "Document Date" = field(DocumentDate);
+                RunPageLink = DocumentNo = field(DocumentNo), DocumentDate = field(DocumentDate);
                 ShortcutKey = 'f7';
-            }
+            }*/
         }
         area(Promoted)
         {
             group(Category_Process)
             {
                 Caption = 'Process';
-                actionref(Post_Promoted; Post) { }
-                actionref(Statistics_Promoted; Statistics) { }
+                //actionref(Statistics_Promoted; Statistics) { }
             }
         }
     }

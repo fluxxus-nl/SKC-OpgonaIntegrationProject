@@ -103,6 +103,8 @@ codeunit 50001 "Conference Jnl.-Post Line ASD"
         ResJnlLine."Gen. Bus. Posting Group" := ConferenceLineASD."Gen. Bus. Posting Group";
         ResJnlLine."Source Code" := ConferenceLineASD."Source Code";
         ResJnlLine."Resource No." := Resource."No.";
+        ResJnlLine."Unit Price" := Resource."Unit Price";
+        ResjnlLine."Total Price" := ConferenceLineASD.Amount;
         ResJnlLine."Unit of Measure Code" := Resource."Base Unit of Measure";
         ResJnlLine."Unit Cost" := Resource."Unit Cost";
         ResJnlLine."Qty. per Unit of Measure" := 1;

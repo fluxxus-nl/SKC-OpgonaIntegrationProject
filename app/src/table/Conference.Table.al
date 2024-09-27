@@ -20,7 +20,7 @@ table 50002 "Conference ASD"
                 Customer: record Customer;
             begin
                 if Rec.Customer <> '' then begin
-                    Customer.Get(Customer);
+                    Customer.Get(Rec.Customer);
                     Rec.CustomerName := Customer.Name;
                     Rec."VAT Bus. Posting Group" := Customer."VAT Bus. Posting Group";
                     Rec."Gen. Bus. Posting Group" := Customer."Gen. Bus. Posting Group";

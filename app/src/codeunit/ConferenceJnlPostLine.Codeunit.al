@@ -9,6 +9,7 @@ codeunit 50001 "Conference Jnl.-Post Line ASD"
         ConferenceRegister: Record "Conference Register ASD";
         ResourceRegister: Record "Resource Register";
         ResJnlLine: Record "Res. Journal Line";
+        ItemJournalLine: Record "Item Journal Line";
         ResourceLedgerEntry: Record "Res. Ledger Entry";
         ConferenceJnlCheckLineASD: Codeunit "Conference Jnl.-Check Line ASD";
         NextEntryNo: Integer;
@@ -31,54 +32,54 @@ codeunit 50001 "Conference Jnl.-Post Line ASD"
 
             PostConferenceLocationToJournal(ConferenceASD, ConferenceLineASD);
             ConferenceJnlCheckLineASD.DoCheckConferenceLocation(ConferenceLocationASD);
-            PostConferenceLocationJournal(ConferenceJournalASD);
+            PostConferenceLocationJournal();
         end;
     end;
 
-    local procedure Code(ConferenceASD: Record "Conference ASD"; ConferenceLineASD: Record "Conference Line ASD")
+    local procedure Code(ConferenceASD: Record "Conference ASD"; LocalConferenceLineASD: Record "Conference Line ASD")
     begin
-        ConferenceJnlCheckLineASD.DoCheckConferenceDoc(ConferenceASD, ConferenceLineASD);
-        PostConferenceDocToJournal(ConferenceASD, ConferenceLineASD);
-        PostConferenceJournal(ConferenceJournalASD);
+        ConferenceJnlCheckLineASD.DoCheckConferenceDoc(ConferenceASD, LocalConferenceLineASD);
+        PostConferenceDocToJournal(ConferenceASD, LocalConferenceLineASD);
+        PostConferenceJournal();
 
 
-        if ConferenceLineASD.type = ConferenceLineASD.type::Resource then begin
-            PostResourceToJournal(ConferenceASD, ConferenceLineASD);
-            PostResourceJournal(ResJnlLine);
+        if LocalConferenceLineASD.type = LocalConferenceLineASD.type::Resource then begin
+            PostResourceToJournal(ConferenceASD, LocalConferenceLineASD);
+            PostResourceJournal();
         end;
 
-        /*if ConferenceLineASD.type = ConferenceLineASD.type::Item then begin
-            PostItemJournal(ConferenceJournalASD);
-            Message('Item Journal Posted');
-        end;*/
+        if LocalConferenceLineASD.type = LocalConferenceLineASD.type::Item then begin
+            PostItemToJournal(ConferenceASD, LocalConferenceLineASD);
+            PostItemJournal();
+        end;
     end;
 
-    local procedure PostConferenceDocToJournal(ConferenceASD: Record "Conference ASD"; ConferenceLineASD: Record "Conference Line ASD")
+    local procedure PostConferenceDocToJournal(ConferenceASD: Record "Conference ASD"; LocalConferenceLineASD: Record "Conference Line ASD")
     begin
-        ConferenceJournalASD.Description := ConferenceLineASD.Description;
+        ConferenceJournalASD.Description := LocalConferenceLineASD.Description;
         ConferenceJournalASD."Document Date" := ConferenceASD.DocumentDate;
         ConferenceJournalASD."Posting Date" := ConferenceASD.PostingDate;
-        ConferenceJournalASD."Entry Type" := ConferenceLineASD.type;
+        ConferenceJournalASD."Entry Type" := LocalConferenceLineASD.type;
         ConferenceJournalASD."Document No." := ConferenceASD.DocumentNo;
-        ConferenceJournalASD.No := ConferenceLineASD."No.";
-        ConferenceJournalASD.Description := ConferenceLineASD.Description;
-        ConferenceJournalASD.Quantity := ConferenceLineASD.Quantity;
-        ConferenceJournalASD."Unit of Measure Code" := ConferenceLineASD."Unit of Measure Code";
-        ConferenceJournalASD."Unit Price" := ConferenceLineASD."Unit Price";
-        ConferenceJournalASD."Total Price" := ConferenceLineASD.Amount;
+        ConferenceJournalASD.No := LocalConferenceLineASD."No.";
+        ConferenceJournalASD.Description := LocalConferenceLineASD.Description;
+        ConferenceJournalASD.Quantity := LocalConferenceLineASD.Quantity;
+        ConferenceJournalASD."Unit of Measure Code" := LocalConferenceLineASD."Unit of Measure Code";
+        ConferenceJournalASD."Unit Price" := LocalConferenceLineASD."Unit Price";
+        ConferenceJournalASD."Total Price" := LocalConferenceLineASD.Amount;
         ConferenceJournalASD."Source Code" := ConferenceASD."Source Code";
         ConferenceJournalASD."Line Discount" := ConferenceLineASD."Line Discount %";
-        ConferenceJournalASD."Gen. Prod. Posting Group" := ConferenceLineASD."Gen. Prod. Posting Group";
-        ConferenceJournalASD."Gen. Bus. Posting Group" := ConferenceLineASD."Gen. Bus. Posting Group";
-        ConferenceJournalASD."VAT Prod. Posting Group" := ConferenceLineASD."VAT Prod. Posting Group";
+        ConferenceJournalASD."Gen. Prod. Posting Group" := LocalConferenceLineASD."Gen. Prod. Posting Group";
+        ConferenceJournalASD."Gen. Bus. Posting Group" := LocalConferenceLineASD."Gen. Bus. Posting Group";
+        ConferenceJournalASD."VAT Prod. Posting Group" := LocalConferenceLineASD."VAT Prod. Posting Group";
     end;
 
-    local procedure PostConferenceLocationToJournal(ConferenceASD: Record "Conference ASD"; ConferenceLineASD: Record "Conference Line ASD")
+    local procedure PostConferenceLocationToJournal(ConferenceASD: Record "Conference ASD"; LocalConferenceLineASD: Record "Conference Line ASD")
     begin
         ConferenceLocationASD.Get(ConferenceASD.ConferenceLocation);
 
         ConferenceJournalASD."Posting Date" := ConferenceASD.PostingDate;
-        ConferenceJournalASD."Entry Type" := ConferenceLineASD.type::Location;
+        ConferenceJournalASD."Entry Type" := LocalConferenceLineASD.type::Location;
         ConferenceJournalASD."Document No." := ConferenceASD.DocumentNo;
         ConferenceJournalASD."Unit of Measure Code" := ConferenceLocationASD."Base Unit of Measure";
         ConferenceJournalASD.No := ConferenceLocationASD."No.";
@@ -88,36 +89,54 @@ codeunit 50001 "Conference Jnl.-Post Line ASD"
         ConferenceJournalASD."VAT Prod. Posting Group" := ConferenceLocationASD."VAT Prod. Posting Group";
     end;
 
-    local procedure PostResourceToJournal(ConferenceASD: Record "Conference ASD"; ConferenceLineASD: Record "Conference Line ASD")
+    local procedure PostResourceToJournal(ConferenceASD: Record "Conference ASD"; LocalConferenceLineASD: Record "Conference Line ASD")
     var
         Resource: Record Resource;
     begin
-        Resource.Get(ConferenceLineASD."No.");
+        Resource.Get(LocalConferenceLineASD."No.");
         ResJnlLine."Entry Type" := ResJnlLine."Entry Type"::Usage;
         ResJnlLine."Document No." := ConferenceASD.DocumentNo;
-        ResJnlLine."Resource No." := Resource."No.";
         ResJnlLine."Posting Date" := ConferenceASD.PostingDate;
-        //ResJnlLine."Reason Code" := ConferenceLineASD.re;
-        ResJnlLine.Description := ConferenceLineASD.Description;
-        ResJnlLine."Gen. Prod. Posting Group" := ConferenceLineASD."Gen. Prod. Posting Group";
-        ResJnlLine."Gen. Bus. Posting Group" := ConferenceLineASD."Gen. Bus. Posting Group";
-        ResJnlLine."Source Code" := ConferenceLineASD."Source Code";
+        ResJnlLine.Description := LocalConferenceLineASD.Description;
+        ResJnlLine."Gen. Prod. Posting Group" := LocalConferenceLineASD."Gen. Prod. Posting Group";
+        ResJnlLine."Gen. Bus. Posting Group" := LocalConferenceLineASD."Gen. Bus. Posting Group";
+        ResJnlLine."Source Code" := LocalConferenceLineASD."Source Code";
         ResJnlLine."Resource No." := Resource."No.";
         ResJnlLine."Unit Price" := Resource."Unit Price";
-        ResjnlLine."Total Price" := ConferenceLineASD.Amount;
+        ResjnlLine."Total Price" := LocalConferenceLineASD.Amount;
         ResJnlLine."Unit of Measure Code" := Resource."Base Unit of Measure";
         ResJnlLine."Unit Cost" := Resource."Unit Cost";
         ResJnlLine."Qty. per Unit of Measure" := 1;
         ResJnlLine."Document Date" := ConferenceASD.DocumentDate;
-        //ResJnlLine."Posting No. Series" := ;
-        ResJnlLine.Quantity := ConferenceLineASD.Quantity;
+        ResJnlLine.Quantity := LocalConferenceLineASD.Quantity;
         ResJnlLine."Total Cost" := ResJnlLine."Unit Cost" * ResJnlLine.Quantity;
-        //ResJnlLine."Shortcut Dimension 1 Code" := ResJnlLine."Shortcut Dimension 1 Code";
-        //ResJnlLine."Shortcut Dimension 2 Code" := ResJnlLine."Shortcut Dimension 2 Code";
-        //ResJnlLine."Dimension Set ID" := ResJnlLine."Dimension Set ID";
     end;
 
-    local procedure PostConferenceJournal(ConferenceJournalASD: Record "Conference Journal ASD")
+    local procedure PostItemToJournal(ConferenceASD: Record "Conference ASD"; LocalConferenceLineASD: Record "Conference Line ASD")
+    var
+        Item: Record Item;
+    begin
+        Item.Get(ConferenceLineASD."No.");
+        ItemJournalLine."Entry Type" := ItemJournalLine."Entry Type"::Sale;
+        ItemJournalLine."Document Type" := ItemJournalLine."Document Type"::Conference;
+        ItemJournalLine."Document No." := ConferenceASD.DocumentNo;
+        ItemJournalLine."Item No." := Item."No.";
+        ItemJournalLine."Posting Date" := ConferenceASD.PostingDate;
+        ItemJournalLine.Description := LocalConferenceLineASD.Description;
+        ItemJournalLine."Gen. Prod. Posting Group" := LocalConferenceLineASD."Gen. Prod. Posting Group";
+        ItemJournalLine."Gen. Bus. Posting Group" := LocalConferenceLineASD."Gen. Bus. Posting Group";
+        ItemJournalLine."Source Code" := LocalConferenceLineASD."Source Code";
+        ItemJournalLine."Unit Cost (Calculated)" := Item."Unit Price";
+        ItemJournalLine."Unit of Measure Code" := Item."Base Unit of Measure";
+        ItemJournalLine."Unit Cost" := Item."Unit Cost";
+        ItemJournalLine."Qty. per Unit of Measure" := 1;
+        ItemJournalLine."Document Date" := ConferenceASD.DocumentDate;
+        ItemJournalLine.Quantity := LocalConferenceLineASD.Quantity;
+        ItemJournalLine."Quantity (Base)" := LocalConferenceLineASD.Quantity;
+        ItemJournalLine."Item Shpt. Entry No." := 0;
+    end;
+
+    local procedure PostConferenceJournal()
     var
         ConferenceLedgerEntryASD: Record "Conference Ledger Entry ASD";
     begin
@@ -155,7 +174,7 @@ codeunit 50001 "Conference Jnl.-Post Line ASD"
         NextEntryNo := NextEntryNo + 1;
     end;
 
-    local procedure PostConferenceLocationJournal(ConferenceJournalASD: Record "Conference Journal ASD")
+    local procedure PostConferenceLocationJournal()
     var
         ConferenceLedgerEntryASD: Record "Conference Ledger Entry ASD";
     begin
@@ -193,17 +212,17 @@ codeunit 50001 "Conference Jnl.-Post Line ASD"
         NextEntryNo := NextEntryNo + 1;
     end;
 
-    local procedure PostResourceJournal(ResourceJournalASD: Record "Res. Journal Line")
+    local procedure PostResourceJournal()
     var
         ResJnlPostLine: Codeunit "Res. Jnl.-Post Line";
     begin
         ResJnlPostLine.RunWithCheck(ResJnlLine);
     end;
 
-    local procedure PostItemJournal(ItemJournalASD: Record "Item Journal Line")
+    local procedure PostItemJournal()
     var
         ItemJnlPostLine: Codeunit "Item Jnl.-Post Line";
     begin
-        ItemJnlPostLine.RunWithCheck(ItemJournalASD);
+        ItemJnlPostLine.RunWithCheck(ItemJournalLine);
     end;
 }

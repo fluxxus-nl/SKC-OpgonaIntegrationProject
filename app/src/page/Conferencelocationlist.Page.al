@@ -16,6 +16,7 @@ page 50000 "Conference Location List ASD"
                 field("No."; Rec."No.")
                 {
                     ApplicationArea = All;
+                    ToolTip = 'Specifies the value of the No. field.', Comment = '%';
                 }
                 field(Name; Rec.Name)
                 {
@@ -63,7 +64,6 @@ page 50000 "Conference Location List ASD"
             {
                 Caption = 'Category_Process';
                 actionref(Create_Promoted; CreateConferenceDocument) { }
-
             }
         }
     }

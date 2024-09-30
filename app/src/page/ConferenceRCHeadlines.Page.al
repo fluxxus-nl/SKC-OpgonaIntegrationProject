@@ -36,22 +36,6 @@ page 50018 "Conference RC Headlines ASD"
         }
     }
 
-    actions
-    {
-        area(Processing)
-        {
-            action(ActionName)
-            {
-                ApplicationArea = All;
-
-                trigger OnAction()
-                begin
-
-                end;
-            }
-        }
-    }
-
     var
         DefaultfieldsVisible: Boolean;
         UserGreetingVisible: boolean;

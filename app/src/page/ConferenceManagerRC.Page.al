@@ -45,7 +45,7 @@ page 50019 "Conference Manager RC ASD"
         {
             action(ConferenceRegistration)
             {
-                ApplicationArea = Basic;
+                ApplicationArea = Basic, Suite;
                 Caption = 'Conference';
                 Image = NewTimesheet;
                 RunObject = Page "Conference Card ASD";
@@ -56,50 +56,50 @@ page 50019 "Conference Manager RC ASD"
         {
             action(ConferenceRegistrations)
             {
-                ApplicationArea = Basic;
+                ApplicationArea = Basic, Suite;
                 Caption = 'Conference';
                 RunObject = Page "Conference List ASD";
             }
             action(PostedConferenceRegistrations1)
             {
-                ApplicationArea = Basic;
+                ApplicationArea = Basic, Suite;
                 Caption = 'Posted Conference';
                 RunObject = Page "Posted Conference List ASD";
             }
             action(Locations)
             {
-                ApplicationArea = Basic;
+                ApplicationArea = Basic, Suite;
                 Caption = 'Conference Locations';
                 RunObject = Page "Conference Location List ASD";
             }
             action(ConferenceLedger)
             {
-                ApplicationArea = Basic;
+                ApplicationArea = Basic, Suite;
                 Caption = 'Conference Ledger Entries';
                 RunObject = Page "Conference Ledger Entries ASD";
             }
             action(ConferenceSetup)
             {
-                ApplicationArea = Basic;
+                ApplicationArea = Basic, Suite;
                 Caption = 'Conference Setup';
                 RunObject = Page "Conference Setup ASD";
             }
             action(Customers)
             {
-                ApplicationArea = Basic;
+                ApplicationArea = Basic, Suite;
                 Caption = 'Customers';
                 RunObject = Page "Customer List";
             }
             action(Item)
             {
-                ApplicationArea = Basic;
+                ApplicationArea = Basic, Suite;
                 Caption = 'Item';
                 RunObject = Page "Item List";
             }
             action(Resources)
             {
-                ApplicationArea = Basic;
-                Caption = 'Resource';
+                ApplicationArea = Basic, Suite;
+                Caption = 'Resources';
                 RunObject = Page "Resource List";
             }
         }
@@ -111,13 +111,13 @@ page 50019 "Conference Manager RC ASD"
                 Image = RegisteredDocs;
                 action(PostedConferenceRegistrations)
                 {
-                    ApplicationArea = Basic;
+                    ApplicationArea = Basic, Suite;
                     Caption = 'Posted Conference Registrations';
                     RunObject = Page "Posted Conference List ASD";
                 }
                 action(Registers)
                 {
-                    ApplicationArea = Basic;
+                    ApplicationArea = Basic, Suite;
                     Caption = 'Registers';
                     RunObject = Page "Conference List ASD";
                 }
@@ -127,21 +127,11 @@ page 50019 "Conference Manager RC ASD"
         {
             action(Navigate)
             {
-                ApplicationArea = Basic;
+                ApplicationArea = Basic, Suite;
                 Caption = 'Navigate';
                 Image = Navigate;
                 RunObject = Page Navigate;
             }
-        }
-        area(Reporting)
-        {
-            // action(ParticipantList)
-            // {
-            //     ApplicationArea = Basic;
-            //     Caption = 'Participant List';
-            //     Image = "Report";
-            //     RunObject = Report "Conference Reg.-Participant List";
-            // }
         }
     }
 }

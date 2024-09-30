@@ -7,6 +7,7 @@ codeunit 50000 "Conference Jnl.-Check Line ASD"
         ConferenceASD.TestField(ConferenceLocation);
         ConferenceASD.TestField(DocumentDate);
         ConferenceASD.TestField(PostingDate);
+        ConferenceASD.TestField("VAT Bus. Posting Group");
         CheckPostingDate(ConferenceASD.PostingDate);
         CheckDocumentDate(ConferenceASD.DocumentDate);
         case ConferenceLineASD.type of

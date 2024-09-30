@@ -39,6 +39,10 @@ table 50002 "Conference ASD"
                 if ConferenceLocation <> '' then begin
                     ConferenceLocationASD.Get(ConferenceLocation);
                     "Unit Price" := ConferenceLocationASD."Unit Price";
+                end
+                else begin
+                    "Total Price" := 0;
+                    "Unit Price" := 0;
                 end;
 
             end;
@@ -47,6 +51,17 @@ table 50002 "Conference ASD"
         {
             Caption = 'Conference Date';
             Tooltip = 'Specifies the value of the Starting Date field';
+
+            trigger OnValidate()
+            begin
+                if StartingDate = 0D then begin
+                    EndingDate := 0D;
+                    StartingTime := 0T;
+                    EndingTime := 0T;
+                    Duration := 0;
+                    NoAttendees := 0;
+                end;
+            end;
         }
         field(5; EndingDate; Date)
         {

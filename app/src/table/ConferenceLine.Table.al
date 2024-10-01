@@ -68,6 +68,8 @@ table 50003 "Conference Line ASD"
             var
                 Item: Record Item;
                 Resource: Record Resource;
+                ResourceIsBlockedErr: Label 'You cannot create this type of document when %1 is blocked', Comment = '%1=Resource No';
+                ItemIsBlockedErr: Label 'You cannot create this type of document when %1 is blocked', Comment = '%1=Item No';
             begin
                 if Rec."No." <> xrec."No." then begin
                     Rec."Unit of Measure Code" := '';
@@ -81,6 +83,10 @@ table 50003 "Conference Line ASD"
                     Rec.Type::Item:
                         begin
                             Item.Get(Rec."No.");
+
+                            if Item.Blocked then
+                                Error(ItemIsBlockedErr, Item."No.");
+
                             rec.Description := Item.Description;
                             rec."Unit Price" := Item."Unit Price";
                             rec."Unit of Measure Code" := item."Base Unit of Measure";
@@ -90,6 +96,10 @@ table 50003 "Conference Line ASD"
                     Rec.Type::Resource:
                         begin
                             Resource.Get(Rec."No.");
+
+                            if Resource.Blocked then
+                                Error(ResourceIsBlockedErr, Resource."No.");
+
                             rec.Description := Resource.Name;
                             rec."Unit Price" := Resource."Unit Price";
                             rec."Unit of Measure Code" := Resource."Base Unit of Measure";

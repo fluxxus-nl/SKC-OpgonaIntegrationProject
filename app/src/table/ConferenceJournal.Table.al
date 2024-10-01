@@ -206,7 +206,14 @@ table 50006 "Conference Journal ASD"
         {
             Caption = 'Line Discount';
         }
-        field(26; NoAttendees; Integer)
+       
+        field(26; "VAT Bus. Posting Group"; Code[20])
+        {
+            Caption = 'VAT Bus. Posting Group';
+            TableRelation = "VAT Business Posting Group";
+        }
+        
+         field(27; NoAttendees; Integer)
         {
             Caption = 'No. of Attendees';
             Tooltip = 'Specifies the value of the No. of Attendees field';

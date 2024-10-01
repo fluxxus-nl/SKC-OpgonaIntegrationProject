@@ -137,6 +137,9 @@ table 50010 "Conference Ledger Entry ASD"
         Rec."Document Date" := ConferenceJournalASD."Document Date";
         Rec."Resource No." := ConferenceJournalASD.No;
         Rec.Description := ConferenceJournalASD.Description;
+        Rec."Gen. Prod. Posting Group" := ConferenceJournalASD."Gen. Prod. Posting Group";
+        Rec."Gen. Bus. Posting Group" := ConferenceJournalASD."Gen. Bus. Posting Group";
+        Rec."VAT. Bus. Posting Group" := ConferenceJournalASD."VAT Bus. Posting Group";
         Rec.Quantity := ConferenceJournalASD.Quantity;
         Rec."Unit Price" := ConferenceJournalASD."Unit Price";
         Rec."Total Price" := ConferenceJournalASD."Total Price";

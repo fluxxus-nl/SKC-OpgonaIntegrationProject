@@ -206,6 +206,11 @@ table 50006 "Conference Journal ASD"
         {
             Caption = 'Line Discount';
         }
+        field(26; "VAT Bus. Posting Group"; Code[20])
+        {
+            Caption = 'VAT Bus. Posting Group';
+            TableRelation = "VAT Business Posting Group";
+        }
     }
 
     keys

@@ -70,8 +70,9 @@ codeunit 50001 "Conference Jnl.-Post Line ASD"
         ConferenceJournalASD."Source Code" := ConferenceASD."Source Code";
         ConferenceJournalASD."Line Discount" := ConferenceLineASD."Line Discount %";
         ConferenceJournalASD."Gen. Prod. Posting Group" := LocalConferenceLineASD."Gen. Prod. Posting Group";
-        ConferenceJournalASD."Gen. Bus. Posting Group" := LocalConferenceLineASD."Gen. Bus. Posting Group";
         ConferenceJournalASD."VAT Prod. Posting Group" := LocalConferenceLineASD."VAT Prod. Posting Group";
+        ConferenceJournalASD."Gen. Bus. Posting Group" := ConferenceASD."Gen. Bus. Posting Group";
+        ConferenceJournalASD."VAT Bus. Posting Group" := ConferenceASD."VAT Bus. Posting Group";
     end;
 
     local procedure PostConferenceLocationToJournal(ConferenceASD: Record "Conference ASD"; LocalConferenceLineASD: Record "Conference Line ASD")
@@ -167,7 +168,6 @@ codeunit 50001 "Conference Jnl.-Post Line ASD"
         ConferenceLedgerEntryASD.CopyFromConferenceJnlLine(ConferenceJournalASD);
 
         ConferenceLedgerEntryASD."Total Price" := Round(ConferenceLedgerEntryASD."Total Price");
-        ConferenceLedgerEntryASD.Description := '';
         ConferenceLedgerEntryASD."User ID" := UserId();
         ConferenceLedgerEntryASD."Entry No." := NextEntryNo;
         ConferenceLedgerEntryASD.Insert();

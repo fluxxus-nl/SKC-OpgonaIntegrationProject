@@ -131,16 +131,14 @@ table 50010 "Conference Ledger Entry ASD"
         Rec."Document Date" := ConferenceJournalASD."Document Date";
         Rec."Resource No." := ConferenceJournalASD.No;
         Rec.Description := ConferenceJournalASD.Description;
+        Rec."Gen. Prod. Posting Group" := ConferenceJournalASD."Gen. Prod. Posting Group";
+        Rec."Gen. Bus. Posting Group" := ConferenceJournalASD."Gen. Bus. Posting Group";
+        Rec."VAT. Bus. Posting Group" := ConferenceJournalASD."VAT Bus. Posting Group";
         Rec.Quantity := ConferenceJournalASD.Quantity;
         Rec."Unit Price" := ConferenceJournalASD."Unit Price";
         Rec."Total Price" := ConferenceJournalASD."Total Price";
-        //Rec."Starting Date" := ConferenceJournalASD."Starting Date";
-        //Rec."Resource Ledger Entry No." := ConferenceJournalASD."Resource Ledger Entry No.";
         Rec."Source Code" := ConferenceJournalASD."Source Code";
         Rec."Journal Batch Name" := ConferenceJournalASD."Journal Batch Name";
         Rec."Reason Code" := ConferenceJournalASD."Reason Code";
-        //Rec."Global Dimension 1 Code" := ConferenceJournalASD."Shortcut Dimension 1 Code";
-        //Rec."Global Dimension 2 Code" := ConferenceJournalASD."Shortcut Dimension 2 Code";
-        //Rec."Dimension Set ID" := ConferenceJournalASD."Dimension Set ID";
     end;
 }

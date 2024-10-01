@@ -18,9 +18,14 @@ table 50002 "Conference ASD"
             trigger OnValidate()
             var
                 Customer: record Customer;
+                CustomerIsBlockedErr: Label 'You cannot create this type of document when %1 is blocked with type Invoice or with type Invoice and Ship', Comment = '%1=Customer No';
             begin
                 if Rec.Customer <> '' then begin
                     Customer.Get(Rec.Customer);
+
+                    if (Customer.Blocked = Customer.Blocked::Invoice) or (Customer.Blocked = Customer.Blocked::All) then
+                        Error(CustomerIsBlockedErr, Rec.Customer);
+
                     Rec.CustomerName := Customer.Name;
                     Rec."VAT Bus. Posting Group" := Customer."VAT Bus. Posting Group";
                     Rec."Gen. Bus. Posting Group" := Customer."Gen. Bus. Posting Group";
@@ -35,9 +40,14 @@ table 50002 "Conference ASD"
             trigger OnValidate()
             var
                 ConferenceLocationASD: record "Conference Location ASD";
+                ConfLocationBlockedErr: Label 'You cannot create this type of document when %1 is blocked', Comment = '%1=Conference Location No';
             begin
                 if ConferenceLocation <> '' then begin
                     ConferenceLocationASD.Get(ConferenceLocation);
+
+                    if ConferenceLocationASD.Blocked then
+                        Error(ConfLocationBlockedErr, ConferenceLocation);
+
                     "Unit Price" := ConferenceLocationASD."Unit Price";
                 end
                 else begin

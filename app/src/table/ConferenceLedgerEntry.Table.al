@@ -106,6 +106,11 @@ table 50010 "Conference Ledger Entry ASD"
             Caption = 'VAT Bus. Posting Group';
             TableRelation = "VAT Business Posting Group";
         }
+        field(32; NoAttendees; Integer)
+        {
+            Caption = 'No. of Attendees';
+            Tooltip = 'Specifies the value of the No. of Attendees field';
+        }
     }
 
     keys
@@ -114,6 +119,7 @@ table 50010 "Conference Ledger Entry ASD"
         {
             Clustered = true;
         }
+        key(PK2; "Document No.", "Posting Date") { }
     }
 
     procedure GetLastEntryNo(): Integer;
@@ -139,6 +145,7 @@ table 50010 "Conference Ledger Entry ASD"
         Rec."Total Price" := ConferenceJournalASD."Total Price";
         Rec."Source Code" := ConferenceJournalASD."Source Code";
         Rec."Journal Batch Name" := ConferenceJournalASD."Journal Batch Name";
+        Rec.NoAttendees := ConferenceJournalASD.NoAttendees;
         Rec."Reason Code" := ConferenceJournalASD."Reason Code";
     end;
 }

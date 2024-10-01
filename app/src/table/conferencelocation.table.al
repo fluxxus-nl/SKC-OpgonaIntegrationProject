@@ -128,6 +128,10 @@ table 50005 "Conference Location ASD"
         {
             Caption = 'Document Date';
         }
+        field(24; "Date Filter"; Date)
+        {
+            FieldClass = FlowFilter;
+        }
     }
     keys
     {

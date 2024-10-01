@@ -57,6 +57,15 @@ page 50000 "Conference Location List ASD"
                     end;
                 end;
             }
+            action(Statistics)
+            {
+                Caption = 'Statistics';
+                ToolTip = 'View Statistical Information';
+                image = Statistics;
+                RunObject = Page "Conference Statistics ASD";
+                RunPageLink = ConferenceLocation = field("No."), PostingDate = field("Date Filter");
+                ShortcutKey = 'f7';
+            }
         }
         area(Promoted)
         {
@@ -64,6 +73,7 @@ page 50000 "Conference Location List ASD"
             {
                 Caption = 'Category_Process';
                 actionref(Create_Promoted; CreateConferenceDocument) { }
+                actionref(Statistics_action; Statistics) { }
             }
         }
     }

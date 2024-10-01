@@ -59,6 +59,7 @@ page 50007 "Conference Lines ASD"
                 field("Discount Amount"; Rec."Discount Amount")
                 {
                     ToolTip = 'Specifies the value of the Discount Amount field.', Comment = '%';
+                    Editable = false;
                 }
                 field(Amount; Rec.Amount)
                 {

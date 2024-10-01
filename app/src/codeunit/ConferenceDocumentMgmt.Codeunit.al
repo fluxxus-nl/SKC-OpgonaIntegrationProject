@@ -14,7 +14,7 @@ codeunit 50002 "Conference Document Mgmt ASD"
         PostedConferenceHeaderASD.Insert(true);
 
         ConferenceLineASD.Reset();
-        ConferenceLineASD.SetRange("No.", ConferenceASD.DocumentNo);
+        ConferenceLineASD.SetRange("Document No.", ConferenceASD.DocumentNo);
         if ConferenceLineASD.FindSet() then
             repeat
                 PostedConferenceLineASD.Init();

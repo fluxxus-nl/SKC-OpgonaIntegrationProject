@@ -137,6 +137,7 @@ table 50002 "Conference ASD"
         field(18; "Total Price"; Decimal)
         {
             Caption = 'Total Price';
+            DataClassification = CustomerContent;
         }
         field(19; "Duration"; Duration)
         {
@@ -165,6 +166,34 @@ table 50002 "Conference ASD"
         field(23; CustomerName; Text[100])
         {
             Caption = 'Customer Name';
+        }
+        field(24; "Date Filter"; Date)
+        {
+            Caption = 'Date Filter';
+            FieldClass = FlowFilter;
+        }
+        field(25; TotalPriceStatistics; Decimal)
+        {
+            Fieldclass = Flowfield;
+            Editable = false;
+            Autoformattype = 1;
+            CalcFormula = Sum("Conference Ledger Entry ASD"."Total Price"
+                where("Resource No." = field(ConferenceLocation), "Posting Date" = field("Date Filter")));
+        }
+        field(26; NoAttendeesStatistics; Integer)
+        {
+            Fieldclass = Flowfield;
+            Editable = false;
+            Autoformattype = 1;
+            CalcFormula = Sum("Conference Ledger Entry ASD".NoAttendees
+                where("Resource No." = field(ConferenceLocation), "Posting Date" = field("Date Filter")));
+        }
+        field(27; NoConferencesStatistics; Integer)
+        {
+            Fieldclass = Flowfield;
+            Editable = false;
+            Autoformattype = 1;
+            CalcFormula = count("Conference Ledger Entry ASD" where("Resource No." = field(ConferenceLocation), "Posting Date" = field("Date Filter")));
         }
     }
 

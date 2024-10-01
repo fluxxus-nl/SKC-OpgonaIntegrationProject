@@ -79,18 +79,6 @@ page 50014 "Posted Conference List ASD"
     {
         area(Processing)
         {
-            action(Post)
-            {
-                Caption = 'Post';
-                ApplicationArea = All;
-                Image = Post;
-                Scope = Repeater;
-
-                trigger OnAction()
-                begin
-                    Message('in progress');
-                end;
-            }
             action(FindEntries)
             {
                 Caption = 'Find Entries';
@@ -111,7 +99,6 @@ page 50014 "Posted Conference List ASD"
             group(Category_Process)
             {
                 Caption = 'Process';
-                actionref(Post_Promoted; Post) { }
                 actionref(FEntries; Findentries) { }
             }
         }

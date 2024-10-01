@@ -55,7 +55,7 @@ page 50012 "Posted Conference Card ASD"
                     ToolTip = 'Specifies the value of the Total Price field.', Comment = '%';
                 }
             }
-            part(ConferenceRegistrationLines; "Conference Lines ASD")
+            part(ConferenceRegistrationLines; "Posted Conference Lines ASD")
             {
                 ApplicationArea = All;
                 SubPageLink = "Document No." = field(DocumentNo);

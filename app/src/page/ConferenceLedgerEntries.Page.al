@@ -47,6 +47,10 @@ page 50020 "Conference Ledger Entries ASD"
                 {
                     ToolTip = 'Specifies the value of the Unit of Measure Code field.';
                 }
+                field(NoAttendees; Rec.NoAttendees)
+                {
+                    ToolTip = 'Specifies the value of the No. of Attendees field.', Comment = '%';
+                }
                 field("User ID"; Rec."User ID")
                 {
                     ToolTip = 'Specifies the value of the User ID field.';

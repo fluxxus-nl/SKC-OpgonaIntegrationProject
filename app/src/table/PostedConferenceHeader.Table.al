@@ -1,6 +1,7 @@
 table 50008 "Posted Conference Header ASD"
 {
     DataClassification = CustomerContent;
+    Caption = 'Posted Conference Header';
 
 
     fields

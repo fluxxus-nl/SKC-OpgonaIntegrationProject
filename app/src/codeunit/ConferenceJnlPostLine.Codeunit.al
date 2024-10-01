@@ -68,6 +68,7 @@ codeunit 50001 "Conference Jnl.-Post Line ASD"
         ConferenceJournalASD."Unit Price" := LocalConferenceLineASD."Unit Price";
         ConferenceJournalASD."Total Price" := LocalConferenceLineASD.Amount;
         ConferenceJournalASD."Source Code" := ConferenceASD."Source Code";
+        ConferenceJournalASD.NoAttendees := ConferenceASD.NoAttendees;
         ConferenceJournalASD."Line Discount" := ConferenceLineASD."Line Discount %";
         ConferenceJournalASD."Gen. Prod. Posting Group" := LocalConferenceLineASD."Gen. Prod. Posting Group";
         ConferenceJournalASD."Gen. Bus. Posting Group" := LocalConferenceLineASD."Gen. Bus. Posting Group";

@@ -206,6 +206,11 @@ table 50006 "Conference Journal ASD"
         {
             Caption = 'Line Discount';
         }
+        field(26; NoAttendees; Integer)
+        {
+            Caption = 'No. of Attendees';
+            Tooltip = 'Specifies the value of the No. of Attendees field';
+        }
     }
 
     keys

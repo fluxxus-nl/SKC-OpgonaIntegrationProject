@@ -5,6 +5,7 @@ page 50008 "Conference Journal ASD"
     ApplicationArea = All;
     SourceTable = "Conference Journal ASD";
     SaveValues = true;
+    UsageCategory = None;
 
     layout
     {

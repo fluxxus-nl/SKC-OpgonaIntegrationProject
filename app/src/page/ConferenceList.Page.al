@@ -72,28 +72,4 @@ page 50004 "Conference List ASD"
             }
         }
     }
-
-    actions
-    {
-        area(Processing)
-        {
-            action(Statistics)
-            {
-                Caption = 'Statistics';
-                ToolTip = 'View Statistical Information';
-                image = Statistics;
-                RunObject = Page "Conference Statistics ASD";
-                RunPageLink = DocumentNo = field(DocumentNo), DocumentDate = field(DocumentDate);
-                ShortcutKey = 'f7';
-            }
-        }
-        area(Promoted)
-        {
-            group(Category_Process)
-            {
-                Caption = 'Process';
-                actionref(Statistics_Promoted; Statistics) { }
-            }
-        }
-    }
 }

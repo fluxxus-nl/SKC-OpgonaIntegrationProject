@@ -1,6 +1,6 @@
 page 50013 "Posted Conference Lines ASD"
 {
-    Caption = 'Conference Lines';
+    Caption = 'Posted Conference Lines';
     PageType = ListPart;
     ApplicationArea = All;
     AutoSplitKey = true;
